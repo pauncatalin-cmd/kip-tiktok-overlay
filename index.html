@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KIP TikTok Bottom Bar</title>
+<title>KIP Full Overlay</title>
 
 <style>
 :root{
@@ -13,6 +13,8 @@
     --red:#ff1744;
     --white:#ffffff;
     --discord:#5865F2;
+    --pink:#ff4fd8;
+    --orange:#ff9d00;
 }
 
 *{
@@ -27,6 +29,154 @@ body{
     background:transparent;
     font-family:Arial,Helvetica,sans-serif;
 }
+
+/* TOP TROLL BAR */
+
+.troll-overlay{
+    position:fixed;
+    left:50%;
+    top:38px;
+    transform:translateX(-50%);
+    width:980px;
+    height:86px;
+    overflow:hidden;
+    background:transparent;
+}
+
+.troll-slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-18px) scale(.98);
+    animation:trollShow 48s infinite;
+}
+
+.troll-slide:nth-child(1){animation-delay:0s;}
+.troll-slide:nth-child(2){animation-delay:4s;}
+.troll-slide:nth-child(3){animation-delay:8s;}
+.troll-slide:nth-child(4){animation-delay:12s;}
+.troll-slide:nth-child(5){animation-delay:16s;}
+.troll-slide:nth-child(6){animation-delay:20s;}
+.troll-slide:nth-child(7){animation-delay:24s;}
+.troll-slide:nth-child(8){animation-delay:28s;}
+.troll-slide:nth-child(9){animation-delay:32s;}
+.troll-slide:nth-child(10){animation-delay:36s;}
+.troll-slide:nth-child(11){animation-delay:40s;}
+.troll-slide:nth-child(12){animation-delay:44s;}
+
+@keyframes trollShow{
+    0%{
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-18px) scale(.98);
+    }
+
+    4%{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0) scale(1);
+    }
+
+    7%{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0) scale(1);
+    }
+
+    8.2%{
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(18px) scale(.98);
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(18px) scale(.98);
+    }
+}
+
+.troll-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:13px;
+    padding:10px 20px;
+    border-radius:20px;
+    background:rgba(0,0,0,.18);
+    backdrop-filter:blur(4px);
+    box-shadow:
+        0 0 18px rgba(57,255,20,.35),
+        inset 0 0 18px rgba(57,255,20,.12);
+}
+
+.troll-title{
+    color:var(--green);
+    font-size:34px;
+    font-weight:1000;
+    line-height:1;
+    text-shadow:
+        0 0 10px var(--green),
+        0 0 26px rgba(57,255,20,.9);
+    white-space:nowrap;
+}
+
+.troll-label{
+    color:white;
+    font-size:22px;
+    font-weight:1000;
+    letter-spacing:1px;
+    text-shadow:
+        0 0 8px white,
+        0 0 18px var(--cyan);
+    white-space:nowrap;
+}
+
+.troll-main{
+    color:var(--pink);
+    font-size:38px;
+    font-weight:1000;
+    line-height:1;
+    text-shadow:
+        0 0 10px var(--pink),
+        0 0 26px rgba(255,79,216,.9);
+    white-space:nowrap;
+}
+
+.troll-action{
+    color:white;
+    font-size:20px;
+    font-weight:900;
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(0,234,255,.65);
+    white-space:nowrap;
+}
+
+.troll-icon{
+    font-size:40px;
+    filter:drop-shadow(0 0 12px var(--green));
+}
+
+.troll-pill{
+    padding:7px 13px;
+    border-radius:12px;
+    background:var(--red);
+    color:white;
+    font-size:18px;
+    font-weight:1000;
+    box-shadow:
+        0 0 12px var(--red),
+        0 0 26px rgba(255,23,68,.8);
+    white-space:nowrap;
+}
+
+/* BOTTOM PROMO BAR */
 
 .overlay{
     position:fixed;
@@ -229,6 +379,107 @@ body{
 </head>
 
 <body>
+
+<div class="troll-overlay">
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">⚡</div>
+            <div class="troll-title">LIVE CU TROLL</div>
+            <div class="troll-label">CONTROLEAZĂ-MI CARACTERUL</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🧴</div>
+            <div class="troll-label">PARFUM</div>
+            <div class="troll-main">ANIMAȚIE TROLL</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">💜</div>
+            <div class="troll-label">SUPER GG</div>
+            <div class="troll-main">ANIMAȚIE TROLL</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🎩</div>
+            <div class="troll-label">PĂLĂRIA</div>
+            <div class="troll-main">DANS MACARENA</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🐚</div>
+            <div class="troll-label">SCOICA</div>
+            <div class="troll-main">DANS MICHAEL JACKSON</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">💸</div>
+            <div class="troll-label">MONEY GUN</div>
+            <div class="troll-main">TASTA F</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🫶</div>
+            <div class="troll-label">HAND HEART</div>
+            <div class="troll-main">DANS</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🕊️</div>
+            <div class="troll-label">PAPER CRANE</div>
+            <div class="troll-main">FLOTĂRI</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🚪</div>
+            <div class="troll-label">FUTURE</div>
+            <div class="troll-main">ALT + F4</div>
+            <div class="troll-pill">MĂ SCOȚI DIN JOC</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🧸</div>
+            <div class="troll-label">MISHKA BEAR</div>
+            <div class="troll-main">DANS FLOS</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">🎉</div>
+            <div class="troll-label">CONFETTI</div>
+            <div class="troll-main">ANIMAȚIE TROLL</div>
+        </div>
+    </div>
+
+    <div class="troll-slide">
+        <div class="troll-box">
+            <div class="troll-icon">⚡</div>
+            <div class="troll-title">TRIMITE GIFT</div>
+            <div class="troll-label">ȘI PORNEȘTI TROLL-UL</div>
+        </div>
+    </div>
+
+</div>
 
 <div class="overlay">
 
