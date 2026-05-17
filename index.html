@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KIP Full Overlay</title>
+<title>KIP Full TikTok Overlay</title>
 
 <style>
 :root{
@@ -14,7 +14,6 @@
     --white:#ffffff;
     --discord:#5865F2;
     --pink:#ff4fd8;
-    --orange:#ff9d00;
 }
 
 *{
@@ -30,234 +29,163 @@ body{
     font-family:Arial,Helvetica,sans-serif;
 }
 
-/* TOP TROLL BAR */
-
-.troll-overlay{
-    position:fixed;
-    left:50%;
-    top:38px;
-    transform:translateX(-50%);
-    width:980px;
-    height:86px;
-    overflow:hidden;
-    background:transparent;
-}
-
-.troll-slide{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:16px;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(-18px) scale(.98);
-    animation:trollShow 48s infinite;
-}
-
-.troll-slide:nth-child(1){animation-delay:0s;}
-.troll-slide:nth-child(2){animation-delay:4s;}
-.troll-slide:nth-child(3){animation-delay:8s;}
-.troll-slide:nth-child(4){animation-delay:12s;}
-.troll-slide:nth-child(5){animation-delay:16s;}
-.troll-slide:nth-child(6){animation-delay:20s;}
-.troll-slide:nth-child(7){animation-delay:24s;}
-.troll-slide:nth-child(8){animation-delay:28s;}
-.troll-slide:nth-child(9){animation-delay:32s;}
-.troll-slide:nth-child(10){animation-delay:36s;}
-.troll-slide:nth-child(11){animation-delay:40s;}
-.troll-slide:nth-child(12){animation-delay:44s;}
-
-@keyframes trollShow{
-    0%{
-        opacity:0;
-        visibility:hidden;
-        transform:translateY(-18px) scale(.98);
-    }
-
-    4%{
-        opacity:1;
-        visibility:visible;
-        transform:translateY(0) scale(1);
-    }
-
-    7%{
-        opacity:1;
-        visibility:visible;
-        transform:translateY(0) scale(1);
-    }
-
-    8.2%{
-        opacity:0;
-        visibility:hidden;
-        transform:translateY(18px) scale(.98);
-    }
-
-    100%{
-        opacity:0;
-        visibility:hidden;
-        transform:translateY(18px) scale(.98);
-    }
-}
-
-.troll-box{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:13px;
-    padding:10px 20px;
-    border-radius:20px;
-    background:rgba(0,0,0,.18);
-    backdrop-filter:blur(4px);
-    box-shadow:
-        0 0 18px rgba(57,255,20,.35),
-        inset 0 0 18px rgba(57,255,20,.12);
-}
-
-.troll-title{
-    color:var(--green);
-    font-size:34px;
-    font-weight:1000;
-    line-height:1;
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 26px rgba(57,255,20,.9);
-    white-space:nowrap;
-}
-
-.troll-label{
-    color:white;
-    font-size:22px;
-    font-weight:1000;
-    letter-spacing:1px;
-    text-shadow:
-        0 0 8px white,
-        0 0 18px var(--cyan);
-    white-space:nowrap;
-}
-
-.troll-main{
-    color:var(--pink);
-    font-size:38px;
-    font-weight:1000;
-    line-height:1;
-    text-shadow:
-        0 0 10px var(--pink),
-        0 0 26px rgba(255,79,216,.9);
-    white-space:nowrap;
-}
-
-.troll-action{
-    color:white;
-    font-size:20px;
-    font-weight:900;
-    text-shadow:
-        0 0 8px white,
-        0 0 18px rgba(0,234,255,.65);
-    white-space:nowrap;
-}
-
-.troll-icon{
-    font-size:40px;
-    filter:drop-shadow(0 0 12px var(--green));
-}
-
-.troll-pill{
-    padding:7px 13px;
-    border-radius:12px;
-    background:var(--red);
-    color:white;
-    font-size:18px;
-    font-weight:1000;
-    box-shadow:
-        0 0 12px var(--red),
-        0 0 26px rgba(255,23,68,.8);
-    white-space:nowrap;
-}
-
-/* BOTTOM PROMO BAR */
-
-.overlay{
+.full-overlay{
     position:fixed;
     left:50%;
     bottom:38px;
     transform:translateX(-50%);
     width:980px;
+    height:176px;
+    overflow:hidden;
+    background:transparent;
+}
+
+.bar{
+    position:absolute;
+    left:0;
+    width:980px;
     height:86px;
     overflow:hidden;
     background:transparent;
 }
 
-.slide{
+.troll-bar{
+    top:0;
+}
+
+.promo-bar{
+    bottom:0;
+}
+
+.item{
     position:absolute;
     inset:0;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:16px;
     opacity:0;
     visibility:hidden;
-    transform:translateY(18px) scale(.98);
-    animation:show 24s infinite;
+    animation:fadeItem 66s infinite;
 }
 
-.slide:nth-child(1){animation-delay:0s;}
-.slide:nth-child(2){animation-delay:4s;}
-.slide:nth-child(3){animation-delay:8s;}
-.slide:nth-child(4){animation-delay:12s;}
-.slide:nth-child(5){animation-delay:16s;}
-.slide:nth-child(6){animation-delay:20s;}
-
-@keyframes show{
+@keyframes fadeItem{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:translateY(18px) scale(.98);
+        transform:scale(.98);
     }
 
-    4%{
+    2%{
         opacity:1;
         visibility:visible;
-        transform:translateY(0) scale(1);
+        transform:scale(1);
     }
 
-    14%{
+    7.5%{
         opacity:1;
         visibility:visible;
-        transform:translateY(0) scale(1);
+        transform:scale(1);
     }
 
-    17%{
+    9%{
         opacity:0;
         visibility:hidden;
-        transform:translateY(-18px) scale(.98);
+        transform:scale(.98);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:translateY(-18px) scale(.98);
+        transform:scale(.98);
     }
 }
 
-.icon{
-    font-size:40px;
-    filter:drop-shadow(0 0 12px var(--cyan));
+.troll-bar .item:nth-child(1){animation-delay:0s;}
+.troll-bar .item:nth-child(2){animation-delay:6s;}
+.troll-bar .item:nth-child(3){animation-delay:12s;}
+.troll-bar .item:nth-child(4){animation-delay:18s;}
+.troll-bar .item:nth-child(5){animation-delay:24s;}
+.troll-bar .item:nth-child(6){animation-delay:30s;}
+.troll-bar .item:nth-child(7){animation-delay:36s;}
+.troll-bar .item:nth-child(8){animation-delay:42s;}
+.troll-bar .item:nth-child(9){animation-delay:48s;}
+.troll-bar .item:nth-child(10){animation-delay:54s;}
+.troll-bar .item:nth-child(11){animation-delay:60s;}
+
+.promo-bar .item{
+    animation:fadePromo 36s infinite;
+}
+
+.promo-bar .item:nth-child(1){animation-delay:0s;}
+.promo-bar .item:nth-child(2){animation-delay:6s;}
+.promo-bar .item:nth-child(3){animation-delay:12s;}
+.promo-bar .item:nth-child(4){animation-delay:18s;}
+.promo-bar .item:nth-child(5){animation-delay:24s;}
+.promo-bar .item:nth-child(6){animation-delay:30s;}
+
+@keyframes fadePromo{
+    0%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(.98);
+    }
+
+    3%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1);
+    }
+
+    13%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1);
+    }
+
+    16%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(.98);
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(.98);
+    }
 }
 
 .box{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:13px;
-    padding:10px 20px;
-    border-radius:20px;
-    background:rgba(0,0,0,.18);
-    backdrop-filter:blur(4px);
-    box-shadow:
-        0 0 18px rgba(0,234,255,.35),
-        inset 0 0 18px rgba(0,234,255,.12);
+    gap:14px;
+    width:auto;
+    max-width:960px;
+    height:76px;
+    padding:8px 22px;
+    background:transparent;
+    box-shadow:none;
+    backdrop-filter:none;
+}
+
+.troll-box{
+    box-shadow:none;
+}
+
+.logo{
+    width:66px;
+    height:66px;
+    object-fit:contain;
+    flex-shrink:0;
+    filter:
+        drop-shadow(0 0 10px rgba(0,234,255,.85))
+        drop-shadow(0 0 18px rgba(57,255,20,.35));
+}
+
+.icon{
+    font-size:42px;
+    filter:drop-shadow(0 0 12px var(--cyan));
 }
 
 .label{
@@ -280,6 +208,18 @@ body{
         0 0 10px var(--blue),
         0 0 26px rgba(0,170,255,.95),
         0 0 44px rgba(0,234,255,.65);
+    white-space:nowrap;
+}
+
+.troll-main{
+    color:var(--pink);
+    font-size:44px;
+    font-weight:1000;
+    line-height:1;
+    text-shadow:
+        0 0 10px var(--pink),
+        0 0 28px rgba(255,79,216,.95),
+        0 0 46px rgba(255,79,216,.65);
     white-space:nowrap;
 }
 
@@ -318,6 +258,14 @@ body{
         0 0 12px var(--green),
         0 0 26px rgba(57,255,20,.8);
     white-space:nowrap;
+}
+
+.danger-pill{
+    background:var(--red);
+    color:white;
+    box-shadow:
+        0 0 12px var(--red),
+        0 0 26px rgba(255,23,68,.8);
 }
 
 .platforms{
@@ -380,171 +328,167 @@ body{
 
 <body>
 
-<div class="troll-overlay">
+<div class="full-overlay">
 
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">⚡</div>
-            <div class="troll-title">LIVE CU TROLL</div>
-            <div class="troll-label">CONTROLEAZĂ-MI CARACTERUL</div>
-        </div>
-    </div>
+    <div class="bar troll-bar">
 
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🧴</div>
-            <div class="troll-label">PARFUM</div>
-            <div class="troll-main">ANIMAȚIE TROLL</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">💜</div>
-            <div class="troll-label">SUPER GG</div>
-            <div class="troll-main">ANIMAȚIE TROLL</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🎩</div>
-            <div class="troll-label">PĂLĂRIA</div>
-            <div class="troll-main">DANS MACARENA</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🐚</div>
-            <div class="troll-label">SCOICA</div>
-            <div class="troll-main">DANS MICHAEL JACKSON</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">💸</div>
-            <div class="troll-label">MONEY GUN</div>
-            <div class="troll-main">TASTA F</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🫶</div>
-            <div class="troll-label">HAND HEART</div>
-            <div class="troll-main">DANS</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🕊️</div>
-            <div class="troll-label">PAPER CRANE</div>
-            <div class="troll-main">FLOTĂRI</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🚪</div>
-            <div class="troll-label">FUTURE</div>
-            <div class="troll-main">ALT + F4</div>
-            <div class="troll-pill">MĂ SCOȚI DIN JOC</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🧸</div>
-            <div class="troll-label">MISHKA BEAR</div>
-            <div class="troll-main">DANS FLOS</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">🎉</div>
-            <div class="troll-label">CONFETTI</div>
-            <div class="troll-main">ANIMAȚIE TROLL</div>
-        </div>
-    </div>
-
-    <div class="troll-slide">
-        <div class="troll-box">
-            <div class="troll-icon">⚡</div>
-            <div class="troll-title">TRIMITE GIFT</div>
-            <div class="troll-label">ȘI PORNEȘTI TROLL-UL</div>
-        </div>
-    </div>
-
-</div>
-
-<div class="overlay">
-
-    <div class="slide">
-        <div class="box">
-            <div class="icon">🛒</div>
-            <div class="label">B-ZONE</div>
-            <div class="main">SHOP</div>
-            <div class="small">INTRĂ PE SHOP</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="box">
-            <div class="icon">🏷️</div>
-            <div class="label">PROMO CODE</div>
-            <div class="main green">KIP</div>
-            <div class="small">LA CHECKOUT</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="box">
-            <div class="icon">🌐</div>
-            <div class="label">LINK SHOP</div>
-            <div class="main">GTA5.RO/SHOP</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="box">
-            <div class="icon">🎁</div>
-            <div class="label">ADAUGĂ</div>
-            <div class="main green">REFERRAL 13</div>
-            <div class="pill">MAȘINĂ + GEANTĂ</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="box">
-            <div class="icon">🔴</div>
-            <div class="label">LIVE PE</div>
-            <div class="main red">TIKTOK</div>
-            <div class="small">KICK & YOUTUBE</div>
-            <div class="platforms">
-                <div class="platform">♪</div>
-                <div class="platform kick">K</div>
-                <div class="platform yt">▶</div>
+        <div class="item">
+            <div class="box troll-box">
+                <div class="icon">⚡</div>
+                <div class="main green">LIVE CU TROLL</div>
+                <div class="label">CONTROLEAZĂ-MI CARACTERUL</div>
             </div>
         </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Perfume.png">
+                <div class="label">PARFUM</div>
+                <div class="troll-main">ANIMAȚIE TROLL</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Super GG.png">
+                <div class="label">SUPER GG</div>
+                <div class="troll-main">ANIMAȚIE TROLL</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="palarie.png">
+                <div class="label">PĂLĂRIA</div>
+                <div class="troll-main">DANS MACARENA</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="scoica.png">
+                <div class="label">SCOICA</div>
+                <div class="troll-main">DANS MICHAEL JACKSON</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Money Gun.png">
+                <div class="label">MONEY GUN</div>
+                <div class="troll-main">TASTA F</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="hand_heart.png">
+                <div class="label">HAND HEART</div>
+                <div class="troll-main">DANS</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Paper Crane.png">
+                <div class="label">PAPER CRANE</div>
+                <div class="troll-main">FLOTĂRI</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Future Encounter.png">
+                <div class="label">FUTURE</div>
+                <div class="troll-main">ALT + F4</div>
+                <div class="pill danger-pill">MĂ SCOȚI DIN JOC</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="mishka_bear.png">
+                <div class="label">MISHKA BEAR</div>
+                <div class="troll-main">DANS FLOS</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box troll-box">
+                <img class="logo" src="Confetti.png">
+                <div class="label">CONFETTI</div>
+                <div class="troll-main">ANIMAȚIE TROLL</div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="slide">
-        <div class="box">
-            <div class="discord-logo">
-                <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-                    <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-                </svg>
-            </div>
+    <div class="bar promo-bar">
 
-            <div class="label discord">DISCORD</div>
-            <div class="main green">KIP Community</div>
-            <div class="pill">LINK ÎN BIO</div>
+        <div class="item">
+            <div class="box">
+                <div class="icon">🛒</div>
+                <div class="label">B-ZONE</div>
+                <div class="main">SHOP</div>
+                <div class="small">INTRĂ PE SHOP</div>
+            </div>
         </div>
+
+        <div class="item">
+            <div class="box">
+                <div class="icon">🏷️</div>
+                <div class="label">PROMO CODE</div>
+                <div class="main green">KIP</div>
+                <div class="small">LA CHECKOUT</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box">
+                <div class="icon">🌐</div>
+                <div class="label">LINK SHOP</div>
+                <div class="main">GTA5.RO/SHOP</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box">
+                <div class="icon">🎁</div>
+                <div class="label">ADAUGĂ</div>
+                <div class="main green">REFERRAL 13</div>
+                <div class="pill">MAȘINĂ + GEANTĂ</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box">
+                <div class="icon">🔴</div>
+                <div class="label">LIVE PE</div>
+                <div class="main red">TIKTOK</div>
+                <div class="small">KICK & YOUTUBE</div>
+                <div class="platforms">
+                    <div class="platform">♪</div>
+                    <div class="platform kick">K</div>
+                    <div class="platform yt">▶</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="box">
+                <div class="discord-logo">
+                    <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
+                        <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
+                    </svg>
+                </div>
+
+                <div class="label discord">DISCORD</div>
+                <div class="main green">KIP Community</div>
+                <div class="pill">LINK ÎN BIO</div>
+            </div>
+        </div>
+
     </div>
 
 </div>
