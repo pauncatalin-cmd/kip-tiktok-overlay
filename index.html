@@ -8,128 +8,147 @@
 
 <style>
 
-:root {
-    --blue: #00aaff;
-    --blue2: #00eaff;
-    --green: #39ff14;
-    --red: #ff1744;
-    --white: #ffffff;
+:root{
+    --blue:#00aaff;
+    --blue2:#00eaff;
+    --green:#39ff14;
+    --red:#ff1744;
+    --white:#ffffff;
+    --discord:#5865F2;
 }
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: transparent;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+    margin:0;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    background:transparent;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-.overlay {
-    position: fixed;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 430px;
-    height: 340px;
-    overflow: visible;
-    background: transparent;
+.overlay{
+    position:fixed;
+    right:40px;
+    top:50%;
+    transform:translateY(-50%);
+    width:430px;
+    height:340px;
+    overflow:visible;
+    background:transparent;
 }
 
-.slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.slides{
+    position:relative;
+    width:100%;
+    height:100%;
 }
 
-.slide {
-    position: absolute;
-    inset: 0;
-    padding: 10px 20px 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.slide{
+    position:absolute;
+    inset:0;
 
-    opacity: 0;
-    transform: translateX(60px) scale(0.96);
+    padding:10px 20px 35px;
 
-    animation: slideShow 24s infinite;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    opacity:0;
+
+    transform:
+        translateX(60px)
+        scale(0.96);
+
+    animation:
+        slideShow 24s infinite;
 }
 
-.slide:nth-child(1) {
-    animation-delay: 0s;
+.slide:nth-child(1){
+    animation-delay:0s;
 }
 
-.slide:nth-child(2) {
-    animation-delay: 4s;
+.slide:nth-child(2){
+    animation-delay:4s;
 }
 
-.slide:nth-child(3) {
-    animation-delay: 8s;
+.slide:nth-child(3){
+    animation-delay:8s;
 }
 
-.slide:nth-child(4) {
-    animation-delay: 12s;
+.slide:nth-child(4){
+    animation-delay:12s;
 }
 
-.slide:nth-child(5) {
-    animation-delay: 16s;
+.slide:nth-child(5){
+    animation-delay:16s;
 }
 
-.slide:nth-child(6) {
-    animation-delay: 20s;
+.slide:nth-child(6){
+    animation-delay:20s;
 }
 
-@keyframes slideShow {
+@keyframes slideShow{
 
-    0% {
-        opacity: 0;
-        transform: translateX(70px) scale(0.96);
+    0%{
+        opacity:0;
+        transform:
+            translateX(70px)
+            scale(0.96);
     }
 
-    5% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
+    5%{
+        opacity:1;
+        transform:
+            translateX(0)
+            scale(1);
     }
 
-    15% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
+    15%{
+        opacity:1;
+        transform:
+            translateX(0)
+            scale(1);
     }
 
-    20% {
-        opacity: 0;
-        transform: translateX(-70px) scale(0.96);
+    20%{
+        opacity:0;
+        transform:
+            translateX(-70px)
+            scale(0.96);
     }
 
-    100% {
-        opacity: 0;
-        transform: translateX(-70px) scale(0.96);
+    100%{
+        opacity:0;
+        transform:
+            translateX(-70px)
+            scale(0.96);
     }
 }
 
-.icon {
-    font-size: 48px;
-    margin-bottom: 10px;
+.icon{
+    font-size:48px;
+
+    margin-bottom:10px;
 
     filter:
         drop-shadow(0 0 14px var(--blue2));
 }
 
-.label {
-    color: var(--white);
+.label{
+    color:var(--white);
 
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:1px;
 
-    margin-bottom: 6px;
+    margin-bottom:6px;
 
     text-shadow:
         0 0 8px var(--blue2),
@@ -137,12 +156,12 @@ body {
         0 0 28px rgba(0,170,255,0.7);
 }
 
-.main {
-    font-size: 52px;
-    font-weight: 1000;
-    line-height: 1;
+.main{
+    font-size:52px;
+    font-weight:1000;
+    line-height:1;
 
-    color: var(--blue);
+    color:var(--blue);
 
     text-shadow:
         0 0 10px var(--blue),
@@ -150,8 +169,8 @@ body {
         0 0 42px rgba(0,234,255,0.65);
 }
 
-.main.green {
-    color: var(--green);
+.main.green{
+    color:var(--green);
 
     text-shadow:
         0 0 10px var(--green),
@@ -159,8 +178,8 @@ body {
         0 0 44px rgba(57,255,20,0.65);
 }
 
-.main.red {
-    color: var(--red);
+.main.red{
+    color:var(--red);
 
     text-shadow:
         0 0 10px var(--red),
@@ -168,90 +187,90 @@ body {
         0 0 44px rgba(255,23,68,0.65);
 }
 
-.sub {
-    margin-top: 12px;
+.sub{
+    margin-top:12px;
 
-    color: var(--white);
+    color:var(--white);
 
-    font-size: 21px;
-    font-weight: 900;
-    line-height: 1.25;
+    font-size:21px;
+    font-weight:900;
+    line-height:1.25;
 
     text-shadow:
         0 0 8px rgba(255,255,255,0.9),
         0 0 18px rgba(0,234,255,0.55);
 }
 
-.pill {
-    margin-top: 14px;
+.pill{
+    margin-top:14px;
 
-    padding: 8px 16px;
+    padding:8px 16px;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    background: var(--green);
-    color: #061006;
+    background:var(--green);
+    color:#061006;
 
-    font-size: 22px;
-    font-weight: 1000;
+    font-size:22px;
+    font-weight:1000;
 
     box-shadow:
         0 0 12px var(--green),
         0 0 28px rgba(57,255,20,0.85);
 }
 
-.platforms {
-    display: flex;
-    gap: 16px;
+.platforms{
+    display:flex;
+    gap:16px;
 
-    margin-top: 18px;
+    margin-top:18px;
 }
 
-.platform {
-    width: 58px;
-    height: 58px;
+.platform{
+    width:58px;
+    height:58px;
 
-    border-radius: 14px;
+    border-radius:14px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    font-size: 28px;
-    font-weight: 1000;
+    font-size:28px;
+    font-weight:1000;
 
-    background: rgba(0,0,0,0.35);
+    background:rgba(0,0,0,0.35);
 
-    border: 2px solid var(--blue);
+    border:2px solid var(--blue);
 
-    color: white;
+    color:white;
 
     box-shadow:
         0 0 14px rgba(0,170,255,0.95);
 }
 
-.platform.kick {
-    border-color: var(--green);
+.platform.kick{
+    border-color:var(--green);
 
-    color: var(--green);
+    color:var(--green);
 
     box-shadow:
         0 0 14px rgba(57,255,20,0.95);
 }
 
-.platform.yt {
-    border-color: var(--red);
+.platform.yt{
+    border-color:var(--red);
 
-    color: var(--red);
+    color:var(--red);
 
     box-shadow:
         0 0 14px rgba(255,23,68,0.95);
 }
 
-.mini-line {
-    width: 170px;
-    height: 3px;
+.mini-line{
+    width:170px;
+    height:3px;
 
-    margin: 12px 0;
+    margin:12px 0;
 
     background:
         linear-gradient(
@@ -266,6 +285,81 @@ body {
         0 0 14px var(--blue2);
 }
 
+.discord-slide{
+    gap:8px;
+}
+
+.discord-logo{
+    width:82px;
+    height:82px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:24px;
+
+    background:rgba(88,101,242,0.18);
+
+    box-shadow:
+        0 0 18px rgba(88,101,242,1),
+        0 0 42px rgba(88,101,242,0.8);
+}
+
+.discord-logo svg{
+    width:70px;
+    height:70px;
+
+    filter:
+        drop-shadow(0 0 10px rgba(88,101,242,1));
+}
+
+.discord-title{
+    margin-top:10px;
+
+    color:white;
+
+    font-size:25px;
+    font-weight:1000;
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 10px var(--discord),
+        0 0 26px rgba(88,101,242,1);
+}
+
+.discord-link{
+    margin-top:6px;
+
+    color:var(--green);
+
+    font-size:36px;
+    font-weight:1000;
+    line-height:1;
+
+    text-shadow:
+        0 0 10px var(--green),
+        0 0 28px rgba(57,255,20,0.9);
+}
+
+.discord-sub{
+    margin-top:10px;
+
+    padding:7px 14px;
+
+    border-radius:12px;
+
+    background:rgba(88,101,242,0.95);
+
+    color:white;
+
+    font-size:18px;
+    font-weight:1000;
+
+    box-shadow:
+        0 0 14px rgba(88,101,242,1),
+        0 0 30px rgba(88,101,242,0.8);
+}
+
 </style>
 </head>
 
@@ -273,139 +367,147 @@ body {
 
 <div class="overlay">
 
-    <div class="slides">
+<div class="slides">
 
-        <div class="slide">
+<div class="slide">
 
-            <div class="icon">🛒</div>
+<div class="icon">🛒</div>
 
-            <div class="label">
-                B-ZONE
-            </div>
+<div class="label">
+B-ZONE
+</div>
 
-            <div class="main">
-                SHOP
-            </div>
+<div class="main">
+SHOP
+</div>
 
-            <div class="sub">
-                INTRĂ PE SHOP
-            </div>
+<div class="sub">
+INTRĂ PE SHOP
+</div>
 
-        </div>
+</div>
 
-        <div class="slide">
+<div class="slide">
 
-            <div class="icon">🏷️</div>
+<div class="icon">🏷️</div>
 
-            <div class="label">
-                PROMO CODE
-            </div>
+<div class="label">
+PROMO CODE
+</div>
 
-            <div class="main green">
-                KIP
-            </div>
+<div class="main green">
+KIP
+</div>
 
-            <div class="sub">
-                FOLOSEȘTE CODUL LA CHECKOUT
-            </div>
+<div class="sub">
+FOLOSEȘTE CODUL LA CHECKOUT
+</div>
 
-        </div>
+</div>
 
-        <div class="slide">
+<div class="slide">
 
-            <div class="icon">🌐</div>
+<div class="icon">🌐</div>
 
-            <div class="label">
-                LINK SHOP
-            </div>
+<div class="label">
+LINK SHOP
+</div>
 
-            <div class="main">
-                GTA5.RO
-            </div>
+<div class="main">
+GTA5.RO
+</div>
 
-            <div class="sub">
-                /SHOP
-            </div>
+<div class="sub">
+/SHOP
+</div>
 
-        </div>
+</div>
 
-        <div class="slide">
+<div class="slide">
 
-            <div class="icon">🎁</div>
+<div class="icon">🎁</div>
 
-            <div class="label">
-                ADAUGĂ
-            </div>
+<div class="label">
+ADAUGĂ
+</div>
 
-            <div class="main green">
-                REFERRAL 13
-            </div>
+<div class="main green">
+REFERRAL 13
+</div>
 
-            <div class="sub">
-                ȘI PRIMEȘTI BONUS
-            </div>
+<div class="sub">
+ȘI PRIMEȘTI BONUS
+</div>
 
-            <div class="pill">
-                MAȘINĂ + GEANTĂ
-            </div>
+<div class="pill">
+MAȘINĂ + GEANTĂ
+</div>
 
-        </div>
+</div>
 
-        <div class="slide">
+<div class="slide">
 
-            <div class="icon">🔴</div>
+<div class="icon">🔴</div>
 
-            <div class="label">
-                LIVE PE
-            </div>
+<div class="label">
+LIVE PE
+</div>
 
-            <div class="main red">
-                TIKTOK
-            </div>
+<div class="main red">
+TIKTOK
+</div>
 
-            <div class="sub">
-                KICK & YOUTUBE
-            </div>
+<div class="sub">
+KICK & YOUTUBE
+</div>
 
-            <div class="platforms">
+<div class="platforms">
 
-                <div class="platform">
-                    ♪
-                </div>
+<div class="platform">
+♪
+</div>
 
-                <div class="platform kick">
-                    K
-                </div>
+<div class="platform kick">
+K
+</div>
 
-                <div class="platform yt">
-                    ▶
-                </div>
+<div class="platform yt">
+▶
+</div>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="slide">
+<div class="slide discord-slide">
 
-            <div class="icon">👥</div>
+<div class="discord-logo">
 
-            <div class="label">
-                KIP
-            </div>
+<svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
 
-            <div class="main">
-                COMMUNITY
-            </div>
+<path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
 
-            <div class="mini-line"></div>
+<path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
 
-            <div class="sub">
-                INTRĂ ÎN COMUNITATE
-            </div>
+</svg>
 
-        </div>
+</div>
 
-    </div>
+<div class="discord-title">
+INTRĂ PE DISCORD
+</div>
+
+<div class="discord-link">
+discord.gg/kipcommunity
+</div>
+
+<div class="discord-sub">
+LINK ÎN BIO
+</div>
+
+</div>
+
+</div>
 
 </div>
 
