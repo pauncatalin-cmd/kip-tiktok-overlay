@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KIP Neon Slider Transparent</title>
+
+<title>KIP Neon Slider</title>
 
 <style>
+
 :root {
     --blue: #00aaff;
     --blue2: #00eaff;
@@ -33,8 +35,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     width: 430px;
-    height: 260px;
-    overflow: hidden;
+    height: 340px;
+    overflow: visible;
     background: transparent;
 }
 
@@ -47,41 +49,65 @@ body {
 .slide {
     position: absolute;
     inset: 0;
-    padding: 12px 20px;
+    padding: 10px 20px 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+
     opacity: 0;
     transform: translateX(60px) scale(0.96);
+
     animation: slideShow 24s infinite;
 }
 
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 4s; }
-.slide:nth-child(3) { animation-delay: 8s; }
-.slide:nth-child(4) { animation-delay: 12s; }
-.slide:nth-child(5) { animation-delay: 16s; }
-.slide:nth-child(6) { animation-delay: 20s; }
+.slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.slide:nth-child(3) {
+    animation-delay: 8s;
+}
+
+.slide:nth-child(4) {
+    animation-delay: 12s;
+}
+
+.slide:nth-child(5) {
+    animation-delay: 16s;
+}
+
+.slide:nth-child(6) {
+    animation-delay: 20s;
+}
 
 @keyframes slideShow {
+
     0% {
         opacity: 0;
         transform: translateX(70px) scale(0.96);
     }
+
     5% {
         opacity: 1;
         transform: translateX(0) scale(1);
     }
+
     15% {
         opacity: 1;
         transform: translateX(0) scale(1);
     }
+
     20% {
         opacity: 0;
         transform: translateX(-70px) scale(0.96);
     }
+
     100% {
         opacity: 0;
         transform: translateX(-70px) scale(0.96);
@@ -91,170 +117,296 @@ body {
 .icon {
     font-size: 48px;
     margin-bottom: 10px;
-    filter: drop-shadow(0 0 14px var(--blue2));
+
+    filter:
+        drop-shadow(0 0 14px var(--blue2));
 }
 
 .label {
     color: var(--white);
+
     font-size: 23px;
     font-weight: 900;
     letter-spacing: 1px;
+
+    margin-bottom: 6px;
+
     text-shadow:
         0 0 8px var(--blue2),
-        0 0 18px rgba(0, 234, 255, 0.9),
-        0 0 28px rgba(0, 170, 255, 0.7);
-    margin-bottom: 6px;
+        0 0 18px rgba(0,234,255,0.9),
+        0 0 28px rgba(0,170,255,0.7);
 }
 
 .main {
     font-size: 52px;
     font-weight: 1000;
     line-height: 1;
+
     color: var(--blue);
+
     text-shadow:
         0 0 10px var(--blue),
-        0 0 24px rgba(0, 170, 255, 0.95),
-        0 0 42px rgba(0, 234, 255, 0.65);
+        0 0 24px rgba(0,170,255,0.95),
+        0 0 42px rgba(0,234,255,0.65);
 }
 
 .main.green {
     color: var(--green);
+
     text-shadow:
         0 0 10px var(--green),
-        0 0 26px rgba(57, 255, 20, 0.9),
-        0 0 44px rgba(57, 255, 20, 0.65);
+        0 0 26px rgba(57,255,20,0.9),
+        0 0 44px rgba(57,255,20,0.65);
 }
 
 .main.red {
     color: var(--red);
+
     text-shadow:
         0 0 10px var(--red),
-        0 0 26px rgba(255, 23, 68, 0.9),
-        0 0 44px rgba(255, 23, 68, 0.65);
+        0 0 26px rgba(255,23,68,0.9),
+        0 0 44px rgba(255,23,68,0.65);
 }
 
 .sub {
     margin-top: 12px;
+
     color: var(--white);
+
     font-size: 21px;
     font-weight: 900;
     line-height: 1.25;
+
     text-shadow:
-        0 0 8px rgba(255, 255, 255, 0.9),
-        0 0 18px rgba(0, 234, 255, 0.55);
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 18px rgba(0,234,255,0.55);
 }
 
 .pill {
     margin-top: 14px;
+
     padding: 8px 16px;
+
     border-radius: 12px;
+
     background: var(--green);
     color: #061006;
+
     font-size: 22px;
     font-weight: 1000;
+
     box-shadow:
         0 0 12px var(--green),
-        0 0 28px rgba(57, 255, 20, 0.85);
+        0 0 28px rgba(57,255,20,0.85);
 }
 
 .platforms {
     display: flex;
     gap: 16px;
+
     margin-top: 18px;
 }
 
 .platform {
     width: 58px;
     height: 58px;
+
     border-radius: 14px;
+
     display: grid;
     place-items: center;
+
     font-size: 28px;
     font-weight: 1000;
-    background: rgba(0, 0, 0, 0.35);
+
+    background: rgba(0,0,0,0.35);
+
     border: 2px solid var(--blue);
+
     color: white;
-    box-shadow: 0 0 14px rgba(0, 170, 255, 0.95);
+
+    box-shadow:
+        0 0 14px rgba(0,170,255,0.95);
 }
 
 .platform.kick {
     border-color: var(--green);
+
     color: var(--green);
-    box-shadow: 0 0 14px rgba(57, 255, 20, 0.95);
+
+    box-shadow:
+        0 0 14px rgba(57,255,20,0.95);
 }
 
 .platform.yt {
     border-color: var(--red);
+
     color: var(--red);
-    box-shadow: 0 0 14px rgba(255, 23, 68, 0.95);
+
+    box-shadow:
+        0 0 14px rgba(255,23,68,0.95);
 }
 
 .mini-line {
     width: 170px;
     height: 3px;
+
     margin: 12px 0;
-    background: linear-gradient(90deg, transparent, var(--blue2), var(--green), transparent);
-    box-shadow: 0 0 14px var(--blue2);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--blue2),
+            var(--green),
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px var(--blue2);
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="overlay">
+
     <div class="slides">
 
         <div class="slide">
+
             <div class="icon">🛒</div>
-            <div class="label">B-ZONE</div>
-            <div class="main">SHOP</div>
-            <div class="sub">INTRĂ PE SHOP</div>
+
+            <div class="label">
+                B-ZONE
+            </div>
+
+            <div class="main">
+                SHOP
+            </div>
+
+            <div class="sub">
+                INTRĂ PE SHOP
+            </div>
+
         </div>
 
         <div class="slide">
+
             <div class="icon">🏷️</div>
-            <div class="label">PROMO CODE</div>
-            <div class="main green">KIP</div>
-            <div class="sub">FOLOSEȘTE CODUL LA CHECKOUT</div>
+
+            <div class="label">
+                PROMO CODE
+            </div>
+
+            <div class="main green">
+                KIP
+            </div>
+
+            <div class="sub">
+                FOLOSEȘTE CODUL LA CHECKOUT
+            </div>
+
         </div>
 
         <div class="slide">
+
             <div class="icon">🌐</div>
-            <div class="label">LINK SHOP</div>
-            <div class="main">GTA5.RO</div>
-            <div class="sub">/SHOP</div>
+
+            <div class="label">
+                LINK SHOP
+            </div>
+
+            <div class="main">
+                GTA5.RO
+            </div>
+
+            <div class="sub">
+                /SHOP
+            </div>
+
         </div>
 
         <div class="slide">
+
             <div class="icon">🎁</div>
-            <div class="label">ADAUGĂ</div>
-            <div class="main green">REFERRAL 13</div>
-            <div class="sub">ȘI PRIMEȘTI BONUS</div>
-            <div class="pill">MAȘINĂ + GEANTĂ</div>
+
+            <div class="label">
+                ADAUGĂ
+            </div>
+
+            <div class="main green">
+                REFERRAL 13
+            </div>
+
+            <div class="sub">
+                ȘI PRIMEȘTI BONUS
+            </div>
+
+            <div class="pill">
+                MAȘINĂ + GEANTĂ
+            </div>
+
         </div>
 
         <div class="slide">
+
             <div class="icon">🔴</div>
-            <div class="label">LIVE PE</div>
-            <div class="main red">TIKTOK</div>
-            <div class="sub">KICK & YOUTUBE</div>
+
+            <div class="label">
+                LIVE PE
+            </div>
+
+            <div class="main red">
+                TIKTOK
+            </div>
+
+            <div class="sub">
+                KICK & YOUTUBE
+            </div>
 
             <div class="platforms">
-                <div class="platform">♪</div>
-                <div class="platform kick">K</div>
-                <div class="platform yt">▶</div>
+
+                <div class="platform">
+                    ♪
+                </div>
+
+                <div class="platform kick">
+                    K
+                </div>
+
+                <div class="platform yt">
+                    ▶
+                </div>
+
             </div>
+
         </div>
 
         <div class="slide">
+
             <div class="icon">👥</div>
-            <div class="label">KIP</div>
-            <div class="main">COMMUNITY</div>
+
+            <div class="label">
+                KIP
+            </div>
+
+            <div class="main">
+                COMMUNITY
+            </div>
+
             <div class="mini-line"></div>
-            <div class="sub">INTRĂ ÎN COMUNITATE</div>
+
+            <div class="sub">
+                INTRĂ ÎN COMUNITATE
+            </div>
+
         </div>
 
     </div>
+
 </div>
 
 </body>
