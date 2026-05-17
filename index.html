@@ -3,1171 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>KIP Neon Slider</title>
-
-<style>
-
-:root{
-    --blue:#00aaff;
-    --blue2:#00eaff;
-    --green:#39ff14;
-    --red:#ff1744;
-    --white:#ffffff;
-    --discord:#5865F2;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-    background:transparent;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-.overlay{
-    position:fixed;
-    right:40px;
-    top:50%;
-    transform:translateY(-50%);
-    width:430px;
-    height:340px;
-    overflow:visible;
-    background:transparent;
-}
-
-.slides{
-    position:relative;
-    width:100%;
-    height:100%;
-}
-
-.slide{
-    position:absolute;
-    inset:0;
-
-    padding:10px 20px 35px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    opacity:0;
-
-    transform:
-        translateX(60px)
-        scale(0.96);
-
-    animation:
-        slideShow 24s infinite;
-}
-
-.slide:nth-child(1){
-    animation-delay:0s;
-}
-
-.slide:nth-child(2){
-    animation-delay:4s;
-}
-
-.slide:nth-child(3){
-    animation-delay:8s;
-}
-
-.slide:nth-child(4){
-    animation-delay:12s;
-}
-
-.slide:nth-child(5){
-    animation-delay:16s;
-}
-
-.slide:nth-child(6){
-    animation-delay:20s;
-}
-
-@keyframes slideShow{
-
-    0%{
-        opacity:0;
-        transform:
-            translateX(70px)
-            scale(0.96);
-    }
-
-    5%{
-        opacity:1;
-        transform:
-            translateX(0)
-            scale(1);
-    }
-
-    15%{
-        opacity:1;
-        transform:
-            translateX(0)
-            scale(1);
-    }
-
-    20%{
-        opacity:0;
-        transform:
-            translateX(-70px)
-            scale(0.96);
-    }
-
-    100%{
-        opacity:0;
-        transform:
-            translateX(-70px)
-            scale(0.96);
-    }
-}
-
-.icon{
-    font-size:48px;
-
-    margin-bottom:10px;
-
-    filter:
-        drop-shadow(0 0 14px var(--blue2));
-}
-
-.label{
-    color:var(--white);
-
-    font-size:23px;
-    font-weight:900;
-    letter-spacing:1px;
-
-    margin-bottom:6px;
-
-    text-shadow:
-        0 0 8px var(--blue2),
-        0 0 18px rgba(0,234,255,0.9),
-        0 0 28px rgba(0,170,255,0.7);
-}
-
-.main{
-    font-size:52px;
-    font-weight:1000;
-    line-height:1;
-
-    color:var(--blue);
-
-    text-shadow:
-        0 0 10px var(--blue),
-        0 0 24px rgba(0,170,255,0.95),
-        0 0 42px rgba(0,234,255,0.65);
-}
-
-.main.green{
-    color:var(--green);
-
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 26px rgba(57,255,20,0.9),
-        0 0 44px rgba(57,255,20,0.65);
-}
-
-.main.red{
-    color:var(--red);
-
-    text-shadow:
-        0 0 10px var(--red),
-        0 0 26px rgba(255,23,68,0.9),
-        0 0 44px rgba(255,23,68,0.65);
-}
-
-.sub{
-    margin-top:12px;
-
-    color:var(--white);
-
-    font-size:21px;
-    font-weight:900;
-    line-height:1.25;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,0.9),
-        0 0 18px rgba(0,234,255,0.55);
-}
-
-.pill{
-    margin-top:14px;
-
-    padding:8px 16px;
-
-    border-radius:12px;
-
-    background:var(--green);
-    color:#061006;
-
-    font-size:22px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 12px var(--green),
-        0 0 28px rgba(57,255,20,0.85);
-}
-
-.platforms{
-    display:flex;
-    gap:16px;
-
-    margin-top:18px;
-}
-
-.platform{
-    width:58px;
-    height:58px;
-
-    border-radius:14px;
-
-    display:grid;
-    place-items:center;
-
-    font-size:28px;
-    font-weight:1000;
-
-    background:rgba(0,0,0,0.35);
-
-    border:2px solid var(--blue);
-
-    color:white;
-
-    box-shadow:
-        0 0 14px rgba(0,170,255,0.95);
-}
-
-.platform.kick{
-    border-color:var(--green);
-
-    color:var(--green);
-
-    box-shadow:
-        0 0 14px rgba(57,255,20,0.95);
-}
-
-.platform.yt{
-    border-color:var(--red);
-
-    color:var(--red);
-
-    box-shadow:
-        0 0 14px rgba(255,23,68,0.95);
-}
-
-.mini-line{
-    width:170px;
-    height:3px;
-
-    margin:12px 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--blue2),
-            var(--green),
-            transparent
-        );
-
-    box-shadow:
-        0 0 14px var(--blue2);
-}
-
-.discord-slide{
-    gap:8px;
-}
-
-.discord-logo{
-    width:82px;
-    height:82px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:24px;
-
-    background:rgba(88,101,242,0.18);
-
-    box-shadow:
-        0 0 18px rgba(88,101,242,1),
-        0 0 42px rgba(88,101,242,0.8);
-}
-
-.discord-logo svg{
-    width:70px;
-    height:70px;
-
-    filter:
-        drop-shadow(0 0 10px rgba(88,101,242,1));
-}
-
-.discord-title{
-    margin-top:10px;
-
-    color:white;
-
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:1px;
-
-    text-shadow:
-        0 0 10px var(--discord),
-        0 0 26px rgba(88,101,242,1);
-}
-
-.discord-link{
-    margin-top:6px;
-
-    color:var(--green);
-
-    font-size:36px;
-    font-weight:1000;
-    line-height:1;
-
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 28px rgba(57,255,20,0.9);
-}
-
-.discord-sub{
-    margin-top:10px;
-
-    padding:7px 14px;
-
-    border-radius:12px;
-
-    background:rgba(88,101,242,0.95);
-
-    color:white;
-
-    font-size:18px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 14px rgba(88,101,242,1),
-        0 0 30px rgba(88,101,242,0.8);
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="overlay">
-
-<div class="slides">
-
-<div class="slide">
-
-<div class="icon">🛒</div>
-
-<div class="label">
-B-ZONE
-</div>
-
-<div class="main">
-SHOP
-</div>
-
-<div class="sub">
-INTRĂ PE SHOP
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🏷️</div>
-
-<div class="label">
-PROMO CODE
-</div>
-
-<div class="main green">
-KIP
-</div>
-
-<div class="sub">
-FOLOSEȘTE CODUL LA CHECKOUT
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🌐</div>
-
-<div class="label">
-LINK SHOP
-</div>
-
-<div class="main">
-GTA5.RO
-</div>
-
-<div class="sub">
-/SHOP
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🎁</div>
-
-<div class="label">
-ADAUGĂ
-</div>
-
-<div class="main green">
-REFERRAL 13
-</div>
-
-<div class="sub">
-ȘI PRIMEȘTI BONUS
-</div>
-
-<div class="pill">
-MAȘINĂ + GEANTĂ
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🔴</div>
-
-<div class="label">
-LIVE PE
-</div>
-
-<div class="main red">
-TIKTOK
-</div>
-
-<div class="sub">
-KICK & YOUTUBE
-</div>
-
-<div class="platforms">
-
-<div class="platform">
-♪
-</div>
-
-<div class="platform kick">
-K
-</div>
-
-<div class="platform yt">
-▶
-</div>
-
-</div>
-
-</div>
-
-<div class="slide discord-slide">
-
-<div class="discord-logo">
-
-<svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-
-<path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-
-<path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-
-</svg>
-
-</div>
-
-<div class="discord-title">
-INTRĂ PE DISCORD
-</div>
-
-<div class="discord-link">
-discord.gg/kipcommunity
-</div>
-
-<div class="discord-sub">
-LINK ÎN BIO
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
-ocupa prea mult loc, trebuie facut pe orizontala..
-<div class="slide discord-slide-horizontal">
-
-    <div class="discord-left">
-
-        <div class="discord-logo">
-
-            <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-
-                <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-
-                <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-
-            </svg>
-
-        </div>
-
-    </div>
-
-    <div class="discord-right">
-
-        <div class="discord-title">
-            DISCORD
-        </div>
-
-        <div class="discord-link">
-            discord.gg/kipcommunity
-        </div>
-
-        <div class="discord-sub">
-            LINK ÎN BIO
-        </div>
-
-    </div>
-
-</div>
-
-Și adaugă CSS-ul acesta:
-
-.discord-slide-horizontal{
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-}
-
-.discord-left{
-    flex-shrink:0;
-}
-
-.discord-right{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    text-align:left;
-}
-
-.discord-logo{
-    width:72px;
-    height:72px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:20px;
-
-    background:rgba(88,101,242,0.16);
-
-    box-shadow:
-        0 0 16px rgba(88,101,242,1),
-        0 0 34px rgba(88,101,242,0.7);
-}
-
-.discord-logo svg{
-    width:60px;
-    height:60px;
-
-    filter:
-        drop-shadow(0 0 8px rgba(88,101,242,1));
-}
-
-.discord-title{
-    color:white;
-
-    font-size:30px;
-    font-weight:1000;
-    line-height:1;
-
-    text-shadow:
-        0 0 10px #5865F2,
-        0 0 24px rgba(88,101,242,1);
-}
-
-.discord-link{
-    margin-top:8px;
-
-    color:#39ff14;
-
-    font-size:21px;
-    font-weight:1000;
-
-    text-shadow:
-        0 0 10px #39ff14,
-        0 0 22px rgba(57,255,20,0.9);
-}
-
-.discord-sub{
-    margin-top:10px;
-
-    padding:6px 12px;
-
-    border-radius:10px;
-
-    background:#5865F2;
-
-    color:white;
-
-    font-size:15px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 12px rgba(88,101,242,1);
-}
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>KIP Neon Slider</title>
-
-<style>
-
-:root{
-    --blue:#00aaff;
-    --blue2:#00eaff;
-    --green:#39ff14;
-    --red:#ff1744;
-    --white:#ffffff;
-    --discord:#5865F2;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-    background:transparent;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-.overlay{
-    position:fixed;
-    right:40px;
-    top:50%;
-    transform:translateY(-50%);
-    width:430px;
-    height:340px;
-    overflow:visible;
-    background:transparent;
-}
-
-.slides{
-    position:relative;
-    width:100%;
-    height:100%;
-}
-
-.slide{
-    position:absolute;
-    inset:0;
-
-    padding:10px 20px 35px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    opacity:0;
-
-    transform:
-        translateX(60px)
-        scale(0.96);
-
-    animation:
-        slideShow 24s infinite;
-}
-
-.slide:nth-child(1){
-    animation-delay:0s;
-}
-
-.slide:nth-child(2){
-    animation-delay:4s;
-}
-
-.slide:nth-child(3){
-    animation-delay:8s;
-}
-
-.slide:nth-child(4){
-    animation-delay:12s;
-}
-
-.slide:nth-child(5){
-    animation-delay:16s;
-}
-
-.slide:nth-child(6){
-    animation-delay:20s;
-}
-
-@keyframes slideShow{
-
-    0%{
-        opacity:0;
-        transform:
-            translateX(70px)
-            scale(0.96);
-    }
-
-    5%{
-        opacity:1;
-        transform:
-            translateX(0)
-            scale(1);
-    }
-
-    15%{
-        opacity:1;
-        transform:
-            translateX(0)
-            scale(1);
-    }
-
-    20%{
-        opacity:0;
-        transform:
-            translateX(-70px)
-            scale(0.96);
-    }
-
-    100%{
-        opacity:0;
-        transform:
-            translateX(-70px)
-            scale(0.96);
-    }
-}
-
-.icon{
-    font-size:48px;
-
-    margin-bottom:10px;
-
-    filter:
-        drop-shadow(0 0 14px var(--blue2));
-}
-
-.label{
-    color:var(--white);
-
-    font-size:23px;
-    font-weight:900;
-    letter-spacing:1px;
-
-    margin-bottom:6px;
-
-    text-shadow:
-        0 0 8px var(--blue2),
-        0 0 18px rgba(0,234,255,0.9),
-        0 0 28px rgba(0,170,255,0.7);
-}
-
-.main{
-    font-size:52px;
-    font-weight:1000;
-    line-height:1;
-
-    color:var(--blue);
-
-    text-shadow:
-        0 0 10px var(--blue),
-        0 0 24px rgba(0,170,255,0.95),
-        0 0 42px rgba(0,234,255,0.65);
-}
-
-.main.green{
-    color:var(--green);
-
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 26px rgba(57,255,20,0.9),
-        0 0 44px rgba(57,255,20,0.65);
-}
-
-.main.red{
-    color:var(--red);
-
-    text-shadow:
-        0 0 10px var(--red),
-        0 0 26px rgba(255,23,68,0.9),
-        0 0 44px rgba(255,23,68,0.65);
-}
-
-.sub{
-    margin-top:12px;
-
-    color:var(--white);
-
-    font-size:21px;
-    font-weight:900;
-    line-height:1.25;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,0.9),
-        0 0 18px rgba(0,234,255,0.55);
-}
-
-.pill{
-    margin-top:14px;
-
-    padding:8px 16px;
-
-    border-radius:12px;
-
-    background:var(--green);
-    color:#061006;
-
-    font-size:22px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 12px var(--green),
-        0 0 28px rgba(57,255,20,0.85);
-}
-
-.platforms{
-    display:flex;
-    gap:16px;
-
-    margin-top:18px;
-}
-
-.platform{
-    width:58px;
-    height:58px;
-
-    border-radius:14px;
-
-    display:grid;
-    place-items:center;
-
-    font-size:28px;
-    font-weight:1000;
-
-    background:rgba(0,0,0,0.35);
-
-    border:2px solid var(--blue);
-
-    color:white;
-
-    box-shadow:
-        0 0 14px rgba(0,170,255,0.95);
-}
-
-.platform.kick{
-    border-color:var(--green);
-
-    color:var(--green);
-
-    box-shadow:
-        0 0 14px rgba(57,255,20,0.95);
-}
-
-.platform.yt{
-    border-color:var(--red);
-
-    color:var(--red);
-
-    box-shadow:
-        0 0 14px rgba(255,23,68,0.95);
-}
-
-.mini-line{
-    width:170px;
-    height:3px;
-
-    margin:12px 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--blue2),
-            var(--green),
-            transparent
-        );
-
-    box-shadow:
-        0 0 14px var(--blue2);
-}
-
-.discord-slide{
-    gap:8px;
-}
-
-.discord-logo{
-    width:82px;
-    height:82px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:24px;
-
-    background:rgba(88,101,242,0.18);
-
-    box-shadow:
-        0 0 18px rgba(88,101,242,1),
-        0 0 42px rgba(88,101,242,0.8);
-}
-
-.discord-logo svg{
-    width:70px;
-    height:70px;
-
-    filter:
-        drop-shadow(0 0 10px rgba(88,101,242,1));
-}
-
-.discord-title{
-    margin-top:10px;
-
-    color:white;
-
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:1px;
-
-    text-shadow:
-        0 0 10px var(--discord),
-        0 0 26px rgba(88,101,242,1);
-}
-
-.discord-link{
-    margin-top:6px;
-
-    color:var(--green);
-
-    font-size:36px;
-    font-weight:1000;
-    line-height:1;
-
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 28px rgba(57,255,20,0.9);
-}
-
-.discord-sub{
-    margin-top:10px;
-
-    padding:7px 14px;
-
-    border-radius:12px;
-
-    background:rgba(88,101,242,0.95);
-
-    color:white;
-
-    font-size:18px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 14px rgba(88,101,242,1),
-        0 0 30px rgba(88,101,242,0.8);
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="overlay">
-
-<div class="slides">
-
-<div class="slide">
-
-<div class="icon">🛒</div>
-
-<div class="label">
-B-ZONE
-</div>
-
-<div class="main">
-SHOP
-</div>
-
-<div class="sub">
-INTRĂ PE SHOP
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🏷️</div>
-
-<div class="label">
-PROMO CODE
-</div>
-
-<div class="main green">
-KIP
-</div>
-
-<div class="sub">
-FOLOSEȘTE CODUL LA CHECKOUT
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🌐</div>
-
-<div class="label">
-LINK SHOP
-</div>
-
-<div class="main">
-GTA5.RO
-</div>
-
-<div class="sub">
-/SHOP
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🎁</div>
-
-<div class="label">
-ADAUGĂ
-</div>
-
-<div class="main green">
-REFERRAL 13
-</div>
-
-<div class="sub">
-ȘI PRIMEȘTI BONUS
-</div>
-
-<div class="pill">
-MAȘINĂ + GEANTĂ
-</div>
-
-</div>
-
-<div class="slide">
-
-<div class="icon">🔴</div>
-
-<div class="label">
-LIVE PE
-</div>
-
-<div class="main red">
-TIKTOK
-</div>
-
-<div class="sub">
-KICK & YOUTUBE
-</div>
-
-<div class="platforms">
-
-<div class="platform">
-♪
-</div>
-
-<div class="platform kick">
-K
-</div>
-
-<div class="platform yt">
-▶
-</div>
-
-</div>
-
-</div>
-
-<div class="slide discord-slide">
-
-<div class="discord-logo">
-
-<svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-
-<path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-
-<path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-
-</svg>
-
-</div>
-
-<div class="discord-title">
-INTRĂ PE DISCORD
-</div>
-
-<div class="discord-link">
-KIP Community
-</div>
-
-<div class="discord-sub">
-LINK ÎN BIO
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
-ideea este ca in formatul actual ocupa prea mult loc pe ecran si nu il pot pune nicaieri astfel incat sa fie vizibil, trebuie sa schimbam tot overlay-ul si sa trecem la un format pe orizontala care sa ocupe mai putin spatiu
-
-Da, trecem tot overlay-ul pe format orizontal. Ocupă mai puțin loc și îl poți pune jos sau sus pe ecran.
-
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>KIP Neon Horizontal Slider</title>
+<title>KIP TikTok Bottom Bar</title>
 
 <style>
 :root{
     --blue:#00aaff;
-    --blue2:#00eaff;
+    --cyan:#00eaff;
     --green:#39ff14;
     --red:#ff1744;
     --white:#ffffff;
@@ -1190,36 +31,25 @@ body{
 .overlay{
     position:fixed;
     left:50%;
-    bottom:35px;
+    bottom:38px;
     transform:translateX(-50%);
-
-    width:760px;
-    height:95px;
-
+    width:980px;
+    height:86px;
     overflow:hidden;
     background:transparent;
-}
-
-.slides{
-    position:relative;
-    width:100%;
-    height:100%;
 }
 
 .slide{
     position:absolute;
     inset:0;
-
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:18px;
-
+    gap:16px;
     opacity:0;
-
-    transform:translateY(30px) scale(0.96);
-
-    animation:slideShow 24s infinite;
+    visibility:hidden;
+    transform:translateY(18px) scale(.98);
+    animation:show 24s infinite;
 }
 
 .slide:nth-child(1){animation-delay:0s;}
@@ -1229,221 +59,172 @@ body{
 .slide:nth-child(5){animation-delay:16s;}
 .slide:nth-child(6){animation-delay:20s;}
 
-@keyframes slideShow{
+@keyframes show{
     0%{
         opacity:0;
-        transform:translateY(30px) scale(0.96);
+        visibility:hidden;
+        transform:translateY(18px) scale(.98);
     }
 
-    5%{
+    4%{
         opacity:1;
+        visibility:visible;
         transform:translateY(0) scale(1);
     }
 
-    15%{
+    14%{
         opacity:1;
+        visibility:visible;
         transform:translateY(0) scale(1);
     }
 
-    20%{
+    17%{
         opacity:0;
-        transform:translateY(-30px) scale(0.96);
+        visibility:hidden;
+        transform:translateY(-18px) scale(.98);
     }
 
     100%{
         opacity:0;
-        transform:translateY(-30px) scale(0.96);
+        visibility:hidden;
+        transform:translateY(-18px) scale(.98);
     }
 }
 
 .icon{
-    font-size:42px;
-    filter:drop-shadow(0 0 12px var(--blue2));
+    font-size:40px;
+    filter:drop-shadow(0 0 12px var(--cyan));
 }
 
-.text-box{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.row{
+.box{
     display:flex;
     align-items:center;
-    gap:12px;
-    white-space:nowrap;
+    justify-content:center;
+    gap:13px;
+    padding:10px 20px;
+    border-radius:20px;
+    background:rgba(0,0,0,.18);
+    backdrop-filter:blur(4px);
+    box-shadow:
+        0 0 18px rgba(0,234,255,.35),
+        inset 0 0 18px rgba(0,234,255,.12);
 }
 
 .label{
-    color:var(--white);
-    font-size:22px;
-    font-weight:900;
+    color:white;
+    font-size:24px;
+    font-weight:1000;
     letter-spacing:1px;
-
     text-shadow:
-        0 0 8px var(--blue2),
-        0 0 18px rgba(0,234,255,0.9);
+        0 0 8px white,
+        0 0 18px var(--cyan);
+    white-space:nowrap;
 }
 
 .main{
     color:var(--blue);
-    font-size:38px;
+    font-size:44px;
     font-weight:1000;
     line-height:1;
-
     text-shadow:
         0 0 10px var(--blue),
-        0 0 24px rgba(0,170,255,0.95),
-        0 0 42px rgba(0,234,255,0.65);
+        0 0 26px rgba(0,170,255,.95),
+        0 0 44px rgba(0,234,255,.65);
+    white-space:nowrap;
 }
 
-.main.green{
+.green{
     color:var(--green);
-
     text-shadow:
         0 0 10px var(--green),
-        0 0 26px rgba(57,255,20,0.9);
+        0 0 26px rgba(57,255,20,.9);
 }
 
-.main.red{
+.red{
     color:var(--red);
-
     text-shadow:
         0 0 10px var(--red),
-        0 0 26px rgba(255,23,68,0.9);
+        0 0 26px rgba(255,23,68,.9);
 }
 
-.sub{
-    margin-top:6px;
-
-    color:var(--white);
-    font-size:18px;
+.small{
+    color:white;
+    font-size:20px;
     font-weight:900;
-
     text-shadow:
-        0 0 8px rgba(255,255,255,0.9),
-        0 0 18px rgba(0,234,255,0.55);
+        0 0 8px white,
+        0 0 18px rgba(0,234,255,.65);
+    white-space:nowrap;
 }
 
 .pill{
-    padding:6px 12px;
-
-    border-radius:10px;
-
+    padding:7px 13px;
+    border-radius:12px;
     background:var(--green);
     color:#061006;
-
     font-size:18px;
     font-weight:1000;
-
     box-shadow:
         0 0 12px var(--green),
-        0 0 24px rgba(57,255,20,0.85);
+        0 0 26px rgba(57,255,20,.8);
+    white-space:nowrap;
 }
 
 .platforms{
     display:flex;
-    gap:10px;
+    gap:9px;
 }
 
 .platform{
     width:42px;
     height:42px;
-
     border-radius:12px;
-
     display:grid;
     place-items:center;
-
+    background:rgba(0,0,0,.3);
+    border:2px solid var(--cyan);
+    color:white;
     font-size:22px;
     font-weight:1000;
-
-    background:rgba(0,0,0,0.35);
-
-    border:2px solid var(--blue);
-
-    color:white;
-
-    box-shadow:
-        0 0 12px rgba(0,170,255,0.95);
+    box-shadow:0 0 12px rgba(0,234,255,.9);
 }
 
 .platform.kick{
     border-color:var(--green);
     color:var(--green);
-    box-shadow:0 0 12px rgba(57,255,20,0.95);
+    box-shadow:0 0 12px rgba(57,255,20,.9);
 }
 
 .platform.yt{
     border-color:var(--red);
     color:var(--red);
-    box-shadow:0 0 12px rgba(255,23,68,0.95);
+    box-shadow:0 0 12px rgba(255,23,68,.9);
 }
 
 .discord-logo{
-    width:58px;
-    height:58px;
-
+    width:50px;
+    height:50px;
     display:grid;
     place-items:center;
-
-    border-radius:18px;
-
-    background:rgba(88,101,242,0.18);
-
+    border-radius:15px;
+    background:rgba(88,101,242,.22);
     box-shadow:
         0 0 16px rgba(88,101,242,1),
-        0 0 34px rgba(88,101,242,0.75);
+        0 0 34px rgba(88,101,242,.75);
 }
 
 .discord-logo svg{
-    width:48px;
-    height:48px;
-
-    filter:
-        drop-shadow(0 0 8px rgba(88,101,242,1));
+    width:41px;
+    height:41px;
+    filter:drop-shadow(0 0 8px rgba(88,101,242,1));
 }
 
-.discord-title{
-    color:white;
-
-    font-size:20px;
-    font-weight:1000;
-    letter-spacing:1px;
-
+.discord{
+    color:var(--discord);
     text-shadow:
         0 0 10px var(--discord),
-        0 0 24px rgba(88,101,242,1);
+        0 0 26px rgba(88,101,242,1);
 }
-
-.discord-name{
-    color:var(--green);
-
-    font-size:34px;
-    font-weight:1000;
-    line-height:1;
-
-    text-shadow:
-        0 0 10px var(--green),
-        0 0 26px rgba(57,255,20,0.9);
-}
-
-.discord-sub{
-    padding:6px 12px;
-
-    border-radius:10px;
-
-    background:rgba(88,101,242,0.95);
-
-    color:white;
-
-    font-size:15px;
-    font-weight:1000;
-
-    box-shadow:
-        0 0 12px rgba(88,101,242,1);
-}
-
 </style>
 </head>
 
@@ -1451,98 +232,69 @@ body{
 
 <div class="overlay">
 
-<div class="slides">
-
-<div class="slide">
-    <div class="icon">🛒</div>
-
-    <div class="text-box">
-        <div class="row">
+    <div class="slide">
+        <div class="box">
+            <div class="icon">🛒</div>
             <div class="label">B-ZONE</div>
             <div class="main">SHOP</div>
+            <div class="small">INTRĂ PE SHOP</div>
         </div>
-
-        <div class="sub">INTRĂ PE SHOP</div>
     </div>
-</div>
 
-<div class="slide">
-    <div class="icon">🏷️</div>
-
-    <div class="text-box">
-        <div class="row">
+    <div class="slide">
+        <div class="box">
+            <div class="icon">🏷️</div>
             <div class="label">PROMO CODE</div>
             <div class="main green">KIP</div>
+            <div class="small">LA CHECKOUT</div>
         </div>
-
-        <div class="sub">FOLOSEȘTE CODUL LA CHECKOUT</div>
     </div>
-</div>
 
-<div class="slide">
-    <div class="icon">🌐</div>
-
-    <div class="text-box">
-        <div class="row">
+    <div class="slide">
+        <div class="box">
+            <div class="icon">🌐</div>
             <div class="label">LINK SHOP</div>
             <div class="main">GTA5.RO/SHOP</div>
         </div>
-
-        <div class="sub">INTRĂ DIRECT PE SHOP</div>
     </div>
-</div>
 
-<div class="slide">
-    <div class="icon">🎁</div>
-
-    <div class="text-box">
-        <div class="row">
+    <div class="slide">
+        <div class="box">
+            <div class="icon">🎁</div>
             <div class="label">ADAUGĂ</div>
             <div class="main green">REFERRAL 13</div>
-            <div class="pill">BONUS</div>
+            <div class="pill">MAȘINĂ + GEANTĂ</div>
         </div>
-
-        <div class="sub">MAȘINĂ + GEANTĂ LA CONT NOU</div>
     </div>
-</div>
 
-<div class="slide">
-    <div class="icon">🔴</div>
-
-    <div class="text-box">
-        <div class="row">
+    <div class="slide">
+        <div class="box">
+            <div class="icon">🔴</div>
             <div class="label">LIVE PE</div>
             <div class="main red">TIKTOK</div>
-
+            <div class="small">KICK & YOUTUBE</div>
             <div class="platforms">
                 <div class="platform">♪</div>
                 <div class="platform kick">K</div>
                 <div class="platform yt">▶</div>
             </div>
         </div>
-
-        <div class="sub">KICK & YOUTUBE</div>
-    </div>
-</div>
-
-<div class="slide">
-    <div class="discord-logo">
-        <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-            <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-        </svg>
     </div>
 
-    <div class="text-box">
-        <div class="row">
-            <div class="discord-title">DISCORD</div>
-            <div class="discord-name">KIP Community</div>
-            <div class="discord-sub">LINK ÎN BIO</div>
+    <div class="slide">
+        <div class="box">
+            <div class="discord-logo">
+                <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
+                    <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
+                </svg>
+            </div>
+
+            <div class="label discord">DISCORD</div>
+            <div class="main green">KIP Community</div>
+            <div class="pill">LINK ÎN BIO</div>
         </div>
     </div>
-</div>
-
-</div>
 
 </div>
 
