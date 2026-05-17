@@ -11,7 +11,6 @@
     --cyan:#00eaff;
     --green:#39ff14;
     --red:#ff1744;
-    --white:#ffffff;
     --discord:#5865F2;
     --pink:#ff4fd8;
 }
@@ -32,11 +31,11 @@ body{
 .full-overlay{
     position:fixed;
     left:50%;
-    bottom:38px;
+    bottom:30px;
     transform:translateX(-50%);
     width:980px;
-    height:176px;
-    overflow:hidden;
+    height:150px;
+    overflow:visible;
     background:transparent;
 }
 
@@ -44,8 +43,8 @@ body{
     position:absolute;
     left:0;
     width:980px;
-    height:86px;
-    overflow:hidden;
+    height:74px;
+    overflow:visible;
     background:transparent;
 }
 
@@ -54,7 +53,7 @@ body{
 }
 
 .promo-bar{
-    bottom:0;
+    top:70px;
 }
 
 .item{
@@ -65,38 +64,50 @@ body{
     justify-content:center;
     opacity:0;
     visibility:hidden;
-    animation:fadeItem 66s infinite;
+    animation:itemPop 66s infinite;
 }
 
-@keyframes fadeItem{
+@keyframes itemPop{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(.82);
+        filter:blur(8px);
     }
 
-    2%{
+    1.2%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1.08);
+        filter:blur(0);
+    }
+
+    2.2%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
+        filter:blur(0);
     }
 
-    7.5%{
+    7.2%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
+        filter:blur(0);
     }
 
-    9%{
+    8.6%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(1.12);
+        filter:blur(7px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(.82);
+        filter:blur(8px);
     }
 }
 
@@ -113,7 +124,7 @@ body{
 .troll-bar .item:nth-child(11){animation-delay:60s;}
 
 .promo-bar .item{
-    animation:fadePromo 36s infinite;
+    animation:itemPopPromo 36s infinite;
 }
 
 .promo-bar .item:nth-child(1){animation-delay:0s;}
@@ -123,103 +134,158 @@ body{
 .promo-bar .item:nth-child(5){animation-delay:24s;}
 .promo-bar .item:nth-child(6){animation-delay:30s;}
 
-@keyframes fadePromo{
+@keyframes itemPopPromo{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(.82);
+        filter:blur(8px);
     }
 
-    3%{
+    1.4%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1.08);
+        filter:blur(0);
+    }
+
+    2.5%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
+        filter:blur(0);
     }
 
-    13%{
+    13.5%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
+        filter:blur(0);
     }
 
-    16%{
+    15.8%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(1.12);
+        filter:blur(7px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.98);
+        transform:scale(.82);
+        filter:blur(8px);
     }
 }
 
 .box{
+    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:14px;
+    gap:12px;
     width:auto;
-    max-width:960px;
-    height:76px;
-    padding:8px 22px;
+    max-width:955px;
+    min-height:70px;
+    padding:4px 14px;
     background:transparent;
-    box-shadow:none;
-    backdrop-filter:none;
 }
 
-.troll-box{
-    box-shadow:none;
+.box::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-3px;
+    transform:translateX(-50%);
+    width:72%;
+    height:3px;
+    border-radius:999px;
+    background:linear-gradient(90deg, transparent, var(--cyan), var(--green), transparent);
+    filter:blur(.2px);
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 18px var(--green);
+    opacity:.85;
+}
+
+.troll-box::before{
+    background:linear-gradient(90deg, transparent, var(--green), var(--pink), transparent);
+    box-shadow:
+        0 0 10px var(--green),
+        0 0 18px var(--pink);
 }
 
 .logo{
-    width:66px;
-    height:66px;
+    width:70px;
+    height:70px;
     object-fit:contain;
     flex-shrink:0;
+    animation:logoFloat 2.4s ease-in-out infinite;
     filter:
-        drop-shadow(0 0 10px rgba(0,234,255,.85))
-        drop-shadow(0 0 18px rgba(57,255,20,.35));
+        drop-shadow(0 0 10px rgba(0,234,255,.95))
+        drop-shadow(0 0 18px rgba(57,255,20,.55));
+}
+
+@keyframes logoFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-2deg) scale(1);
+    }
+
+    50%{
+        transform:translateY(-4px) rotate(2deg) scale(1.06);
+    }
 }
 
 .icon{
-    font-size:42px;
+    font-size:40px;
+    flex-shrink:0;
+    animation:logoFloat 2.4s ease-in-out infinite;
     filter:drop-shadow(0 0 12px var(--cyan));
 }
 
 .label{
     color:white;
-    font-size:24px;
+    font-size:22px;
     font-weight:1000;
     letter-spacing:1px;
     text-shadow:
-        0 0 8px white,
-        0 0 18px var(--cyan);
+        0 0 7px white,
+        0 0 16px var(--cyan);
     white-space:nowrap;
 }
 
 .main{
     color:var(--blue);
-    font-size:44px;
+    font-size:41px;
     font-weight:1000;
     line-height:1;
     text-shadow:
         0 0 10px var(--blue),
-        0 0 26px rgba(0,170,255,.95),
-        0 0 44px rgba(0,234,255,.65);
+        0 0 24px rgba(0,170,255,.95),
+        0 0 40px rgba(0,234,255,.65);
     white-space:nowrap;
 }
 
 .troll-main{
     color:var(--pink);
-    font-size:44px;
+    font-size:41px;
     font-weight:1000;
     line-height:1;
     text-shadow:
         0 0 10px var(--pink),
         0 0 28px rgba(255,79,216,.95),
         0 0 46px rgba(255,79,216,.65);
+    white-space:nowrap;
+}
+
+.intro-title{
+    font-size:41px;
+}
+
+.intro-sub{
+    font-size:18px;
+    max-width:420px;
+    overflow:visible;
     white-space:nowrap;
 }
 
@@ -239,24 +305,24 @@ body{
 
 .small{
     color:white;
-    font-size:20px;
+    font-size:18px;
     font-weight:900;
     text-shadow:
-        0 0 8px white,
-        0 0 18px rgba(0,234,255,.65);
+        0 0 7px white,
+        0 0 16px rgba(0,234,255,.65);
     white-space:nowrap;
 }
 
 .pill{
-    padding:7px 13px;
+    padding:6px 11px;
     border-radius:12px;
     background:var(--green);
     color:#061006;
-    font-size:18px;
+    font-size:17px;
     font-weight:1000;
     box-shadow:
         0 0 12px var(--green),
-        0 0 26px rgba(57,255,20,.8);
+        0 0 24px rgba(57,255,20,.8);
     white-space:nowrap;
 }
 
@@ -270,19 +336,19 @@ body{
 
 .platforms{
     display:flex;
-    gap:9px;
+    gap:8px;
 }
 
 .platform{
-    width:42px;
-    height:42px;
-    border-radius:12px;
+    width:38px;
+    height:38px;
+    border-radius:11px;
     display:grid;
     place-items:center;
-    background:rgba(0,0,0,.3);
+    background:rgba(0,0,0,.25);
     border:2px solid var(--cyan);
     color:white;
-    font-size:22px;
+    font-size:20px;
     font-weight:1000;
     box-shadow:0 0 12px rgba(0,234,255,.9);
 }
@@ -300,20 +366,20 @@ body{
 }
 
 .discord-logo{
-    width:50px;
-    height:50px;
+    width:46px;
+    height:46px;
     display:grid;
     place-items:center;
-    border-radius:15px;
-    background:rgba(88,101,242,.22);
+    border-radius:14px;
+    background:rgba(88,101,242,.18);
     box-shadow:
-        0 0 16px rgba(88,101,242,1),
-        0 0 34px rgba(88,101,242,.75);
+        0 0 14px rgba(88,101,242,1),
+        0 0 28px rgba(88,101,242,.75);
 }
 
 .discord-logo svg{
-    width:41px;
-    height:41px;
+    width:38px;
+    height:38px;
     filter:drop-shadow(0 0 8px rgba(88,101,242,1));
 }
 
@@ -335,8 +401,8 @@ body{
         <div class="item">
             <div class="box troll-box">
                 <div class="icon">⚡</div>
-                <div class="main green">LIVE CU TROLL</div>
-                <div class="label">CONTROLEAZĂ-MI CARACTERUL</div>
+                <div class="main green intro-title">LIVE CU TROLL</div>
+                <div class="label intro-sub">CONTROLEAZĂ-MI CARACTERUL</div>
             </div>
         </div>
 
