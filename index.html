@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KIP Overlay Clean FX</title>
+<title>KIP Overlay Final</title>
 
 <style>
 :root{
@@ -39,86 +39,49 @@ body{
     background:transparent;
 }
 
-.bar{
-    position:absolute;
-    left:0;
-    width:980px;
-    height:74px;
-    overflow:visible;
-}
-
-.troll-bar{
-    top:0;
-}
-
-.promo-bar{
-    top:74px;
-}
-
-.box{
+.mega-bar{
     position:absolute;
     inset:0;
     width:980px;
-    height:74px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:0 18px;
-    opacity:0;
+    height:150px;
+    overflow:visible;
+}
+
+.bg-soft{
+    position:absolute;
+    inset:0;
     overflow:hidden;
-    isolation:isolate;
-    transform:scale(.98);
-    animation:boxIn .45s ease forwards;
-
+    pointer-events:none;
     background:
-        radial-gradient(ellipse at center, rgba(255,79,216,.32) 0%, rgba(255,79,216,.15) 32%, rgba(255,79,216,.04) 58%, transparent 76%),
-        radial-gradient(ellipse at 30% 50%, rgba(0,234,255,.22) 0%, rgba(0,234,255,.08) 45%, transparent 72%),
-        linear-gradient(90deg, transparent 0%, rgba(0,234,255,.10) 22%, rgba(255,79,216,.14) 50%, rgba(0,234,255,.10) 78%, transparent 100%);
-
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image:linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+        radial-gradient(ellipse at 50% 28%, rgba(255,79,216,.34) 0%, rgba(255,79,216,.16) 34%, rgba(255,79,216,.05) 58%, transparent 76%),
+        radial-gradient(ellipse at 50% 78%, rgba(57,255,20,.25) 0%, rgba(0,234,255,.16) 38%, rgba(0,234,255,.05) 62%, transparent 78%),
+        linear-gradient(90deg, transparent 0%, rgba(0,234,255,.12) 14%, rgba(255,79,216,.14) 50%, rgba(57,255,20,.10) 86%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-.promo-box{
-    background:
-        radial-gradient(ellipse at center, rgba(0,234,255,.28) 0%, rgba(0,234,255,.13) 34%, rgba(0,234,255,.04) 58%, transparent 76%),
-        radial-gradient(ellipse at 60% 50%, rgba(57,255,20,.22) 0%, rgba(57,255,20,.08) 45%, transparent 72%),
-        linear-gradient(90deg, transparent 0%, rgba(0,234,255,.12) 22%, rgba(57,255,20,.13) 50%, rgba(0,234,255,.10) 78%, transparent 100%);
-}
-
-.box.out{
-    animation:boxOut .65s ease forwards;
-}
-
-@keyframes boxIn{
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-@keyframes boxOut{
-    to{
-        opacity:0;
-        transform:scale(1.035);
-        filter:blur(5px);
-    }
-}
-
-.box::before{
+.bg-soft::before{
     content:"";
     position:absolute;
     inset:-20px;
-    background:
-        linear-gradient(90deg, transparent 0%, rgba(255,255,255,.20) 48%, transparent 62%);
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.24), transparent);
     transform:translateX(-120%);
     animation:scanLight 5s ease-in-out infinite;
-    pointer-events:none;
-    z-index:1;
+}
 
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%);
-    mask-image:linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%);
+.bg-soft::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:74px;
+    width:86%;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg, transparent, rgba(0,234,255,.85), rgba(255,79,216,.75), rgba(57,255,20,.75), transparent);
+    box-shadow:
+        0 0 12px rgba(0,234,255,.9),
+        0 0 22px rgba(255,79,216,.65);
+    opacity:.65;
 }
 
 @keyframes scanLight{
@@ -142,48 +105,83 @@ body{
     }
 }
 
-.box::after{
-    content:"";
+.row{
     position:absolute;
-    left:50%;
-    bottom:7px;
-    width:78%;
-    height:2px;
-    transform:translateX(-50%);
-    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(255,79,216,.75), transparent);
-    box-shadow:
-        0 0 10px rgba(0,234,255,.8),
-        0 0 20px rgba(255,79,216,.6);
-    opacity:.45;
-    z-index:2;
-    pointer-events:none;
+    left:0;
+    width:980px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:0 26px;
+    overflow:visible;
 }
 
-.promo-box::after{
-    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(57,255,20,.75), transparent);
-    box-shadow:
-        0 0 10px rgba(0,234,255,.8),
-        0 0 20px rgba(57,255,20,.6);
+.row-top{
+    top:4px;
+}
+
+.row-bottom{
+    top:78px;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:0 26px;
+    overflow:visible;
+    opacity:1;
+}
+
+.slide.entering .char{
+    animation:charIn .7s cubic-bezier(.2,.85,.25,1.2) forwards;
+    animation-delay:calc(var(--i) * .032s);
+}
+
+.slide.leaving .char{
+    animation:charFlyAway 1.15s cubic-bezier(.16,.9,.18,1) forwards;
+    animation-delay:calc(var(--i) * .018s);
+}
+
+.slide.leaving .logo,
+.slide.leaving .icon,
+.slide.leaving .platforms,
+.slide.leaving .pill,
+.slide.leaving .discord-logo{
+    animation:fadeFly .85s ease forwards;
+}
+
+@keyframes fadeFly{
+    to{
+        opacity:0;
+        transform:translateY(-22px) scale(.8) rotate(8deg);
+        filter:blur(5px);
+    }
 }
 
 .logo{
-    width:56px;
-    height:56px;
+    width:58px;
+    height:58px;
     object-fit:contain;
     flex-shrink:0;
-    z-index:6;
-    animation:logoFloat 2.4s ease-in-out infinite;
+    z-index:5;
     filter:
         drop-shadow(0 0 10px rgba(0,234,255,.95))
         drop-shadow(0 0 18px rgba(57,255,20,.55));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 .icon{
-    font-size:34px;
+    font-size:36px;
     flex-shrink:0;
-    z-index:6;
-    animation:logoFloat 2.4s ease-in-out infinite;
+    z-index:5;
     filter:drop-shadow(0 0 12px var(--cyan));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
@@ -197,10 +195,10 @@ body{
 }
 
 .text{
-    position:relative;
-    z-index:7;
     display:inline-flex;
     white-space:nowrap;
+    position:relative;
+    z-index:6;
 }
 
 .label{
@@ -215,7 +213,7 @@ body{
 
 .main{
     color:var(--blue);
-    font-size:34px;
+    font-size:36px;
     font-weight:1000;
     line-height:1;
     text-shadow:
@@ -226,7 +224,7 @@ body{
 
 .troll-main{
     color:var(--pink);
-    font-size:34px;
+    font-size:36px;
     font-weight:1000;
     line-height:1;
     text-shadow:
@@ -265,9 +263,95 @@ body{
         0 0 26px rgba(88,101,242,1);
 }
 
+.char{
+    display:inline-block;
+    opacity:0;
+    transform-origin:center;
+    will-change:transform, opacity;
+}
+
+@keyframes charIn{
+    0%{
+        opacity:0;
+        transform:translateY(18px) rotateX(90deg) rotateZ(-14deg) scale(.55);
+        filter:blur(6px);
+    }
+
+    70%{
+        opacity:1;
+        transform:translateY(-2px) rotateX(0deg) rotateZ(3deg) scale(1.08);
+        filter:blur(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) rotateX(0deg) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
+}
+
+@keyframes charFlyAway{
+    0%{
+        opacity:1;
+        transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
+
+    35%{
+        opacity:1;
+        transform:translateY(-12px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(1.12);
+        filter:blur(0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-58px) translateX(calc(var(--fly-x) * 2.8)) rotateZ(calc(var(--fly-r) * 2.4)) scale(.42);
+        filter:blur(6px);
+    }
+}
+
+.spark{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:var(--pink);
+    box-shadow:
+        0 0 8px var(--pink),
+        0 0 18px rgba(255,79,216,.9);
+    opacity:0;
+    animation:sparkMove 2.2s ease-in-out infinite;
+    animation-delay:var(--spark-delay);
+    z-index:2;
+}
+
+.row-bottom .spark{
+    background:var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0,234,255,.9);
+}
+
+@keyframes sparkMove{
+    0%{
+        opacity:0;
+        transform:translateY(8px) scale(.4);
+    }
+
+    35%{
+        opacity:1;
+        transform:translateY(-4px) scale(1.2);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-20px) scale(.5);
+    }
+}
+
 .pill{
     position:relative;
-    z-index:7;
+    z-index:6;
     padding:5px 10px;
     border-radius:999px;
     background:var(--green);
@@ -301,103 +385,10 @@ body{
     }
 }
 
-.char{
-    display:inline-block;
-    opacity:0;
-    transform-origin:center;
-    animation:charIn .68s cubic-bezier(.2,.85,.25,1.2) forwards;
-    animation-delay:calc(var(--i) * .032s);
-    will-change:transform, opacity;
-}
-
-.box.out .char{
-    animation:charFlyOut .95s cubic-bezier(.2,.9,.2,1) forwards;
-    animation-delay:calc(var(--i) * .016s);
-}
-
-@keyframes charIn{
-    0%{
-        opacity:0;
-        transform:translateY(18px) rotateX(90deg) rotateZ(-14deg) scale(.55);
-        filter:blur(6px);
-    }
-
-    70%{
-        opacity:1;
-        transform:translateY(-2px) rotateX(0deg) rotateZ(3deg) scale(1.08);
-        filter:blur(0);
-    }
-
-    100%{
-        opacity:1;
-        transform:translateY(0) rotateX(0deg) rotateZ(0deg) scale(1);
-        filter:blur(0);
-    }
-}
-
-@keyframes charFlyOut{
-    0%{
-        opacity:1;
-        transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
-        filter:blur(0);
-    }
-
-    45%{
-        opacity:1;
-        transform:translateY(-9px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(1.08);
-        filter:blur(0);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateY(-32px) translateX(calc(var(--fly-x) * 2)) rotateZ(calc(var(--fly-r) * 2)) scale(.5);
-        filter:blur(5px);
-    }
-}
-
-.spark{
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:var(--pink);
-    box-shadow:
-        0 0 8px var(--pink),
-        0 0 18px rgba(255,79,216,.9);
-    opacity:0;
-    animation:sparkMove 2.2s ease-in-out infinite;
-    animation-delay:var(--spark-delay);
-    z-index:3;
-}
-
-.promo-box .spark{
-    background:var(--cyan);
-    box-shadow:
-        0 0 8px var(--cyan),
-        0 0 18px rgba(0,234,255,.9);
-}
-
-@keyframes sparkMove{
-    0%{
-        opacity:0;
-        transform:translateY(8px) scale(.4);
-    }
-
-    35%{
-        opacity:1;
-        transform:translateY(-4px) scale(1.2);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateY(-18px) scale(.5);
-    }
-}
-
 .platforms{
     display:flex;
     gap:7px;
-    z-index:7;
+    z-index:6;
 }
 
 .platform{
@@ -448,7 +439,7 @@ body{
         0 0 14px rgba(88,101,242,1),
         0 0 28px rgba(88,101,242,.75);
     animation:logoFloat 2.4s ease-in-out infinite;
-    z-index:7;
+    z-index:6;
 }
 
 .discord-logo svg{
@@ -462,13 +453,16 @@ body{
 <body>
 
 <div class="full-overlay">
-    <div class="bar troll-bar" id="trollBar"></div>
-    <div class="bar promo-bar" id="promoBar"></div>
+    <div class="mega-bar">
+        <div class="bg-soft"></div>
+        <div class="row row-top" id="trollRow"></div>
+        <div class="row row-bottom" id="promoRow"></div>
+    </div>
 </div>
 
 <script>
-const slideTime = 10500;
-const exitTime = 1200;
+const slideTime = 9500;
+const flyTime = 1200;
 
 const trollItems = [
     {icon:"⚡", label:"LIVE CU TROLL", main:"CONTROLEAZĂ CARACTERUL", color:"green"},
@@ -498,17 +492,19 @@ let promoIndex = 0;
 
 function textSpans(text, className){
     return `<span class="text ${className}">` + [...text].map((char, index) => {
-        const flyX = (index % 2 === 0 ? -1 : 1) * (14 + Math.random() * 24);
-        const flyR = (index % 2 === 0 ? -1 : 1) * (28 + Math.random() * 50);
+        const direction = index % 2 === 0 ? -1 : 1;
+        const flyX = direction * (18 + Math.random() * 38);
+        const flyR = direction * (45 + Math.random() * 80);
+
         return `<span class="char" style="--i:${index}; --fly-x:${flyX}px; --fly-r:${flyR}deg;">${char === " " ? "&nbsp;" : char}</span>`;
     }).join("") + `</span>`;
 }
 
 function sparkles(){
     let html = "";
-    for(let i = 0; i < 18; i++){
-        const left = 90 + Math.random() * 800;
-        const top = 14 + Math.random() * 42;
+    for(let i = 0; i < 20; i++){
+        const left = 70 + Math.random() * 840;
+        const top = 8 + Math.random() * 52;
         const delay = Math.random() * 2;
         html += `<span class="spark" style="left:${left}px; top:${top}px; --spark-delay:${delay}s;"></span>`;
     }
@@ -525,10 +521,8 @@ function discordLogo(){
     </div>`;
 }
 
-function buildBox(item, type){
-    const boxClass = type === "promo" ? "box promo-box" : "box troll-box";
-    let html = `<div class="${boxClass}">`;
-
+function buildSlide(item, type){
+    let html = `<div class="slide entering">`;
     html += sparkles();
 
     if(item.discord){
@@ -565,34 +559,40 @@ function buildBox(item, type){
     return html;
 }
 
-function showSlide(containerId, items, index, type){
-    const container = document.getElementById(containerId);
-    container.innerHTML = buildBox(items[index], type);
+function switchSlide(rowId, items, index, type){
+    const row = document.getElementById(rowId);
+    const oldSlide = row.querySelector(".slide");
 
-    setTimeout(() => {
-        const box = container.querySelector(".box");
-        if(box){
-            box.classList.add("out");
-        }
-    }, slideTime - exitTime);
+    if(oldSlide){
+        oldSlide.classList.remove("entering");
+        oldSlide.classList.add("leaving");
+
+        setTimeout(() => {
+            if(oldSlide && oldSlide.parentNode){
+                oldSlide.remove();
+            }
+        }, flyTime);
+    }
+
+    row.insertAdjacentHTML("beforeend", buildSlide(items[index], type));
 }
 
-function startOverlay(){
-    showSlide("trollBar", trollItems, trollIndex, "troll");
-    showSlide("promoBar", promoItems, promoIndex, "promo");
+function start(){
+    switchSlide("trollRow", trollItems, trollIndex, "troll");
+    switchSlide("promoRow", promoItems, promoIndex, "promo");
 
     setInterval(() => {
         trollIndex = (trollIndex + 1) % trollItems.length;
-        showSlide("trollBar", trollItems, trollIndex, "troll");
+        switchSlide("trollRow", trollItems, trollIndex, "troll");
     }, slideTime);
 
     setInterval(() => {
         promoIndex = (promoIndex + 1) % promoItems.length;
-        showSlide("promoBar", promoItems, promoIndex, "promo");
+        switchSlide("promoRow", promoItems, promoIndex, "promo");
     }, slideTime);
 }
 
-startOverlay();
+start();
 </script>
 
 </body>
