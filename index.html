@@ -71,18 +71,18 @@ body{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.82);
+        transform:scale(.86) translateY(10px);
         filter:blur(8px);
     }
 
     1.2%{
         opacity:1;
         visibility:visible;
-        transform:scale(1.08);
+        transform:scale(1.08) translateY(0);
         filter:blur(0);
     }
 
-    2.2%{
+    2.3%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
@@ -99,14 +99,14 @@ body{
     8.6%{
         opacity:0;
         visibility:hidden;
-        transform:scale(1.12);
+        transform:scale(1.12) translateY(-8px);
         filter:blur(7px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.82);
+        transform:scale(.86) translateY(10px);
         filter:blur(8px);
     }
 }
@@ -138,14 +138,14 @@ body{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.82);
+        transform:scale(.86) translateY(10px);
         filter:blur(8px);
     }
 
     1.4%{
         opacity:1;
         visibility:visible;
-        transform:scale(1.08);
+        transform:scale(1.08) translateY(0);
         filter:blur(0);
     }
 
@@ -166,14 +166,14 @@ body{
     15.8%{
         opacity:0;
         visibility:hidden;
-        transform:scale(1.12);
+        transform:scale(1.12) translateY(-8px);
         filter:blur(7px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.82);
+        transform:scale(.86) translateY(10px);
         filter:blur(8px);
     }
 }
@@ -183,41 +183,74 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:12px;
-    width:auto;
-    max-width:955px;
+    gap:10px;
+    width:100%;
+    max-width:950px;
     min-height:70px;
-    padding:4px 14px;
+    padding:4px 12px;
     background:transparent;
+    animation:boxPulse 2.4s ease-in-out infinite;
 }
 
-.box::before{
+/* Barele despărțitoare sunt scoase */
+.box::before,
+.troll-box::before{
+    display:none;
+}
+
+/* Flash neon scurt la apariție */
+.box::after{
     content:"";
     position:absolute;
     left:50%;
-    bottom:-3px;
-    transform:translateX(-50%);
-    width:72%;
-    height:3px;
-    border-radius:999px;
-    background:linear-gradient(90deg, transparent, var(--cyan), var(--green), transparent);
-    filter:blur(.2px);
-    box-shadow:
-        0 0 10px var(--cyan),
-        0 0 18px var(--green);
-    opacity:.85;
+    top:50%;
+    width:100%;
+    height:70%;
+    transform:translate(-50%, -50%);
+    background:radial-gradient(circle, rgba(0,234,255,.22), transparent 65%);
+    opacity:0;
+    pointer-events:none;
+    animation:flashGlow 6s infinite;
 }
 
-.troll-box::before{
-    background:linear-gradient(90deg, transparent, var(--green), var(--pink), transparent);
-    box-shadow:
-        0 0 10px var(--green),
-        0 0 18px var(--pink);
+.troll-box::after{
+    background:radial-gradient(circle, rgba(255,79,216,.25), transparent 65%);
+}
+
+@keyframes flashGlow{
+    0%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(.8);
+    }
+
+    8%{
+        opacity:.9;
+        transform:translate(-50%, -50%) scale(1.08);
+    }
+
+    18%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(1.25);
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+@keyframes boxPulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.015);
+    }
 }
 
 .logo{
-    width:70px;
-    height:70px;
+    width:64px;
+    height:64px;
     object-fit:contain;
     flex-shrink:0;
     animation:logoFloat 2.4s ease-in-out infinite;
@@ -237,54 +270,85 @@ body{
 }
 
 .icon{
-    font-size:40px;
+    font-size:38px;
     flex-shrink:0;
     animation:logoFloat 2.4s ease-in-out infinite;
     filter:drop-shadow(0 0 12px var(--cyan));
 }
 
 .label{
+    position:relative;
     color:white;
-    font-size:25px;
+    font-size:24px;
     font-weight:1000;
-    letter-spacing:1px;
+    letter-spacing:.7px;
     text-shadow:
         0 0 7px white,
         0 0 16px var(--cyan);
     white-space:nowrap;
 }
 
-.main{
-    color:var(--blue);
-    font-size:41px;
+.main,
+.troll-main{
+    position:relative;
+    font-size:38px;
     font-weight:1000;
     line-height:1;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+.main{
+    color:var(--blue);
     text-shadow:
         0 0 10px var(--blue),
         0 0 24px rgba(0,170,255,.95),
-        0 0 40px rgba(0,234,255,.65);
-    white-space:nowrap;
+        0 0 38px rgba(0,234,255,.65);
 }
 
 .troll-main{
     color:var(--pink);
-    font-size:41px;
-    font-weight:1000;
-    line-height:1;
     text-shadow:
         0 0 10px var(--pink),
-        0 0 28px rgba(255,79,216,.95),
-        0 0 46px rgba(255,79,216,.65);
-    white-space:nowrap;
+        0 0 26px rgba(255,79,216,.95),
+        0 0 42px rgba(255,79,216,.65);
+}
+
+/* Scan light peste textele mari */
+.main::after,
+.troll-main::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-130%;
+    width:80%;
+    height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
+    transform:skewX(-18deg);
+    animation:textShine 3.2s infinite;
+}
+
+@keyframes textShine{
+    0%{
+        left:-130%;
+    }
+
+    45%{
+        left:130%;
+    }
+
+    100%{
+        left:130%;
+    }
 }
 
 .intro-title{
-    font-size:41px;
+    font-size:38px;
 }
 
 .intro-sub{
-    font-size:18px;
-    max-width:420px;
+    font-size:20px;
+    max-width:none;
     overflow:visible;
     white-space:nowrap;
 }
@@ -314,16 +378,29 @@ body{
 }
 
 .pill{
-    padding:6px 11px;
-    border-radius:12px;
+    padding:5px 10px;
+    border-radius:10px;
     background:var(--green);
     color:#061006;
-    font-size:17px;
+    font-size:16px;
     font-weight:1000;
     box-shadow:
         0 0 12px var(--green),
         0 0 24px rgba(57,255,20,.8);
     white-space:nowrap;
+    animation:pillPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pillPulse{
+    0%,100%{
+        transform:scale(1);
+        filter:brightness(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+        filter:brightness(1.18);
+    }
 }
 
 .danger-pill{
@@ -336,21 +413,22 @@ body{
 
 .platforms{
     display:flex;
-    gap:8px;
+    gap:7px;
 }
 
 .platform{
-    width:38px;
-    height:38px;
-    border-radius:11px;
+    width:34px;
+    height:34px;
+    border-radius:10px;
     display:grid;
     place-items:center;
     background:rgba(0,0,0,.25);
     border:2px solid var(--cyan);
     color:white;
-    font-size:20px;
+    font-size:18px;
     font-weight:1000;
     box-shadow:0 0 12px rgba(0,234,255,.9);
+    animation:platformBounce 1.8s ease-in-out infinite;
 }
 
 .platform.kick{
@@ -365,9 +443,19 @@ body{
     box-shadow:0 0 12px rgba(255,23,68,.9);
 }
 
+@keyframes platformBounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+}
+
 .discord-logo{
-    width:46px;
-    height:46px;
+    width:42px;
+    height:42px;
     display:grid;
     place-items:center;
     border-radius:14px;
@@ -375,11 +463,12 @@ body{
     box-shadow:
         0 0 14px rgba(88,101,242,1),
         0 0 28px rgba(88,101,242,.75);
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 .discord-logo svg{
-    width:38px;
-    height:38px;
+    width:34px;
+    height:34px;
     filter:drop-shadow(0 0 8px rgba(88,101,242,1));
 }
 
