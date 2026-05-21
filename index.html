@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KIP Overlay Final Pro Smooth</title>
+<title>KIP Overlay Smooth</title>
 
 <style>
 :root{
@@ -79,8 +79,6 @@ body{
     gap:10px;
     padding:0 34px;
     overflow:visible;
-    opacity:1;
-    transform:translateY(0) scale(1);
 }
 
 .slide.entering .char{
@@ -88,14 +86,14 @@ body{
     animation-delay:calc(var(--i) * .026s);
 }
 
-.slide.active .text{
-    animation:textBoomPulse 2.4s ease-in-out infinite;
+.slide.active .char{
+    opacity:1;
+    transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
+    filter:blur(0);
 }
 
-.slide.active .logo,
-.slide.active .icon,
-.slide.active .discord-logo{
-    animation:logoFloat 2.4s ease-in-out infinite, softPulse 2.4s ease-in-out infinite;
+.slide.active .text{
+    animation:textBoomPulse 2.4s ease-in-out infinite;
 }
 
 .slide.leaving{
@@ -107,24 +105,16 @@ body{
     animation-delay:calc(var(--i) * .012s);
 }
 
-.slide.leaving .logo,
-.slide.leaving .icon,
-.slide.leaving .platforms,
-.slide.leaving .pill,
-.slide.leaving .discord-logo{
-    animation:fadeFly .85s ease forwards;
-}
-
 @keyframes charInSmooth{
     0%{
         opacity:0;
-        transform:translateY(34px) translateX(var(--enter-x)) rotateZ(var(--enter-r)) scale(.72);
-        filter:blur(10px);
+        transform:translateY(28px) translateX(var(--enter-x)) rotateZ(var(--enter-r)) scale(.74);
+        filter:blur(9px);
     }
 
     55%{
         opacity:1;
-        transform:translateY(-4px) translateX(0) rotateZ(0deg) scale(1.08);
+        transform:translateY(-4px) translateX(0) rotateZ(3deg) scale(1.08);
         filter:blur(0);
     }
 
@@ -142,15 +132,9 @@ body{
         filter:blur(0);
     }
 
-    45%{
-        opacity:.85;
-        transform:translateY(-8px) translateX(calc(var(--fly-x) * .7)) rotateZ(calc(var(--fly-r) * .5)) scale(1.05);
-        filter:blur(1px);
-    }
-
     100%{
         opacity:0;
-        transform:translateY(-38px) translateX(calc(var(--fly-x) * 1.8)) rotateZ(calc(var(--fly-r) * 1.1)) scale(.78);
+        transform:translateY(-34px) translateX(calc(var(--fly-x) * 1.6)) rotateZ(calc(var(--fly-r) * 1.1)) scale(.78);
         filter:blur(8px);
     }
 }
@@ -158,12 +142,12 @@ body{
 @keyframes slideSoftExit{
     0%{
         opacity:1;
-        transform:translateY(0) scale(1);
+        transform:scale(1);
     }
 
     100%{
         opacity:0;
-        transform:translateY(-8px) scale(.97);
+        transform:scale(.97);
     }
 }
 
@@ -173,36 +157,9 @@ body{
         filter:brightness(1);
     }
 
-    45%{
+    50%{
         transform:scale(1.035);
         filter:brightness(1.25);
-    }
-
-    55%{
-        transform:scale(1.015);
-        filter:brightness(1.1);
-    }
-}
-
-@keyframes softPulse{
-    0%,100%{
-        filter:
-            drop-shadow(0 0 10px rgba(0,234,255,.95))
-            drop-shadow(0 0 18px rgba(57,255,20,.55));
-    }
-
-    50%{
-        filter:
-            drop-shadow(0 0 16px rgba(255,79,216,.95))
-            drop-shadow(0 0 30px rgba(0,234,255,.85));
-    }
-}
-
-@keyframes fadeFly{
-    to{
-        opacity:0;
-        transform:translateY(-16px) scale(.9);
-        filter:blur(5px);
     }
 }
 
@@ -215,6 +172,7 @@ body{
     filter:
         drop-shadow(0 0 10px rgba(0,234,255,.95))
         drop-shadow(0 0 18px rgba(57,255,20,.55));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 .icon{
@@ -222,6 +180,7 @@ body{
     flex-shrink:0;
     z-index:5;
     filter:drop-shadow(0 0 12px var(--cyan));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
@@ -439,6 +398,7 @@ body{
     box-shadow:
         0 0 14px rgba(88,101,242,1),
         0 0 28px rgba(88,101,242,.75);
+    animation:logoFloat 2.4s ease-in-out infinite;
     z-index:6;
 }
 
@@ -461,7 +421,7 @@ body{
 
 <script>
 const slideTime = 9500;
-const flyTime = 950;
+const flyTime = 1100;
 const overlapTime = 420;
 
 const trollItems = [
@@ -494,10 +454,10 @@ function textSpans(text, className){
     return `<span class="text ${className}">` + [...text].map((char, index) => {
         const center = (text.length - 1) / 2;
         const distance = index - center;
-        const flyX = distance * 4.2;
-        const flyR = distance * 3.2;
-        const enterX = distance * -3.2;
-        const enterR = distance * -1.8;
+        const flyX = distance * 4;
+        const flyR = distance * 2.6;
+        const enterX = distance * -2.4;
+        const enterR = distance * -1.4;
 
         return `<span class="char" style="--i:${index}; --fly-x:${flyX}px; --fly-r:${flyR}deg; --enter-x:${enterX}px; --enter-r:${enterR}deg;">${char === " " ? "&nbsp;" : char}</span>`;
     }).join("") + `</span>`;
@@ -565,10 +525,9 @@ function buildSlide(item, type){
 function activateSlide(slide){
     setTimeout(() => {
         if(slide){
-            slide.classList.remove("entering");
             slide.classList.add("active");
         }
-    }, 1150);
+    }, 1100);
 }
 
 function switchSlide(rowId, items, index, type){
@@ -576,13 +535,12 @@ function switchSlide(rowId, items, index, type){
     const oldSlide = row.querySelector(".slide:not(.leaving)");
 
     if(oldSlide){
-        oldSlide.classList.remove("entering");
         oldSlide.classList.remove("active");
         oldSlide.classList.add("leaving");
 
         setTimeout(() => {
             row.insertAdjacentHTML("beforeend", buildSlide(items[index], type));
-            const newSlide = row.querySelector(".slide.entering");
+            const newSlide = row.querySelector(".slide.entering:not(.leaving)");
             activateSlide(newSlide);
         }, overlapTime);
 
@@ -590,10 +548,10 @@ function switchSlide(rowId, items, index, type){
             if(oldSlide.parentNode){
                 oldSlide.remove();
             }
-        }, flyTime + 300);
+        }, flyTime + 350);
     } else {
         row.insertAdjacentHTML("beforeend", buildSlide(items[index], type));
-        const newSlide = row.querySelector(".slide.entering");
+        const newSlide = row.querySelector(".slide.entering:not(.leaving)");
         activateSlide(newSlide);
     }
 }
