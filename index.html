@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KIP Overlay Clean</title>
+<title>KIP Overlay Clean FX</title>
 
 <style>
 :root{
@@ -35,7 +35,7 @@ body{
     transform:translateX(-50%);
     width:980px;
     height:150px;
-    overflow:hidden;
+    overflow:visible;
     background:transparent;
 }
 
@@ -44,7 +44,7 @@ body{
     left:0;
     width:980px;
     height:74px;
-    overflow:hidden;
+    overflow:visible;
 }
 
 .troll-bar{
@@ -58,31 +58,37 @@ body{
 .box{
     position:absolute;
     inset:0;
+    width:980px;
+    height:74px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    width:980px;
-    height:74px;
-    padding:0 22px;
+    gap:8px;
+    padding:0 18px;
+    opacity:0;
     overflow:hidden;
     isolation:isolate;
-    opacity:0;
     transform:scale(.98);
     animation:boxIn .45s ease forwards;
+
     background:
-        radial-gradient(circle at center, rgba(255,79,216,.16), transparent 46%),
-        linear-gradient(90deg, rgba(0,0,0,0), rgba(0,234,255,.10), rgba(255,79,216,.12), rgba(0,0,0,0));
+        radial-gradient(ellipse at center, rgba(255,79,216,.32) 0%, rgba(255,79,216,.15) 32%, rgba(255,79,216,.04) 58%, transparent 76%),
+        radial-gradient(ellipse at 30% 50%, rgba(0,234,255,.22) 0%, rgba(0,234,255,.08) 45%, transparent 72%),
+        linear-gradient(90deg, transparent 0%, rgba(0,234,255,.10) 22%, rgba(255,79,216,.14) 50%, rgba(0,234,255,.10) 78%, transparent 100%);
+
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .promo-box{
     background:
-        radial-gradient(circle at center, rgba(0,234,255,.15), transparent 46%),
-        linear-gradient(90deg, rgba(0,0,0,0), rgba(0,234,255,.12), rgba(57,255,20,.10), rgba(0,0,0,0));
+        radial-gradient(ellipse at center, rgba(0,234,255,.28) 0%, rgba(0,234,255,.13) 34%, rgba(0,234,255,.04) 58%, transparent 76%),
+        radial-gradient(ellipse at 60% 50%, rgba(57,255,20,.22) 0%, rgba(57,255,20,.08) 45%, transparent 72%),
+        linear-gradient(90deg, transparent 0%, rgba(0,234,255,.12) 22%, rgba(57,255,20,.13) 50%, rgba(0,234,255,.10) 78%, transparent 100%);
 }
 
 .box.out{
-    animation:boxOut .55s ease forwards;
+    animation:boxOut .65s ease forwards;
 }
 
 @keyframes boxIn{
@@ -95,7 +101,7 @@ body{
 @keyframes boxOut{
     to{
         opacity:0;
-        transform:scale(1.04);
+        transform:scale(1.035);
         filter:blur(5px);
     }
 }
@@ -103,12 +109,16 @@ body{
 .box::before{
     content:"";
     position:absolute;
-    inset:0;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,.20), transparent);
+    inset:-20px;
+    background:
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,.20) 48%, transparent 62%);
     transform:translateX(-120%);
-    animation:scanLight 4.5s ease-in-out infinite;
+    animation:scanLight 5s ease-in-out infinite;
     pointer-events:none;
     z-index:1;
+
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%);
 }
 
 @keyframes scanLight{
@@ -118,12 +128,12 @@ body{
     }
 
     25%{
-        opacity:1;
+        opacity:.9;
     }
 
     55%{
         transform:translateX(120%);
-        opacity:.65;
+        opacity:.45;
     }
 
     100%{
@@ -132,12 +142,36 @@ body{
     }
 }
 
+.box::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:7px;
+    width:78%;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(255,79,216,.75), transparent);
+    box-shadow:
+        0 0 10px rgba(0,234,255,.8),
+        0 0 20px rgba(255,79,216,.6);
+    opacity:.45;
+    z-index:2;
+    pointer-events:none;
+}
+
+.promo-box::after{
+    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(57,255,20,.75), transparent);
+    box-shadow:
+        0 0 10px rgba(0,234,255,.8),
+        0 0 20px rgba(57,255,20,.6);
+}
+
 .logo{
-    width:58px;
-    height:58px;
+    width:56px;
+    height:56px;
     object-fit:contain;
     flex-shrink:0;
-    z-index:4;
+    z-index:6;
     animation:logoFloat 2.4s ease-in-out infinite;
     filter:
         drop-shadow(0 0 10px rgba(0,234,255,.95))
@@ -145,9 +179,9 @@ body{
 }
 
 .icon{
-    font-size:36px;
+    font-size:34px;
     flex-shrink:0;
-    z-index:4;
+    z-index:6;
     animation:logoFloat 2.4s ease-in-out infinite;
     filter:drop-shadow(0 0 12px var(--cyan));
 }
@@ -164,16 +198,16 @@ body{
 
 .text{
     position:relative;
-    z-index:5;
+    z-index:7;
     display:inline-flex;
     white-space:nowrap;
 }
 
 .label{
     color:white;
-    font-size:23px;
+    font-size:21px;
     font-weight:1000;
-    letter-spacing:.6px;
+    letter-spacing:.4px;
     text-shadow:
         0 0 7px white,
         0 0 16px var(--cyan);
@@ -181,7 +215,7 @@ body{
 
 .main{
     color:var(--blue);
-    font-size:38px;
+    font-size:34px;
     font-weight:1000;
     line-height:1;
     text-shadow:
@@ -192,7 +226,7 @@ body{
 
 .troll-main{
     color:var(--pink);
-    font-size:38px;
+    font-size:34px;
     font-weight:1000;
     line-height:1;
     text-shadow:
@@ -203,7 +237,7 @@ body{
 
 .small{
     color:white;
-    font-size:18px;
+    font-size:17px;
     font-weight:900;
     text-shadow:
         0 0 7px white,
@@ -233,12 +267,12 @@ body{
 
 .pill{
     position:relative;
-    z-index:5;
+    z-index:7;
     padding:5px 10px;
-    border-radius:10px;
+    border-radius:999px;
     background:var(--green);
     color:#061006;
-    font-size:16px;
+    font-size:15px;
     font-weight:1000;
     white-space:nowrap;
     box-shadow:
@@ -271,14 +305,14 @@ body{
     display:inline-block;
     opacity:0;
     transform-origin:center;
-    animation:charIn .65s cubic-bezier(.2,.85,.25,1.2) forwards;
-    animation-delay:calc(var(--i) * .035s);
+    animation:charIn .68s cubic-bezier(.2,.85,.25,1.2) forwards;
+    animation-delay:calc(var(--i) * .032s);
     will-change:transform, opacity;
 }
 
 .box.out .char{
-    animation:charOut .45s ease forwards;
-    animation-delay:calc(var(--i) * .012s);
+    animation:charFlyOut .95s cubic-bezier(.2,.9,.2,1) forwards;
+    animation-delay:calc(var(--i) * .016s);
 }
 
 @keyframes charIn{
@@ -301,10 +335,22 @@ body{
     }
 }
 
-@keyframes charOut{
-    to{
+@keyframes charFlyOut{
+    0%{
+        opacity:1;
+        transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
+
+    45%{
+        opacity:1;
+        transform:translateY(-9px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(1.08);
+        filter:blur(0);
+    }
+
+    100%{
         opacity:0;
-        transform:translateY(-24px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(.65);
+        transform:translateY(-32px) translateX(calc(var(--fly-x) * 2)) rotateZ(calc(var(--fly-r) * 2)) scale(.5);
         filter:blur(5px);
     }
 }
@@ -321,7 +367,7 @@ body{
     opacity:0;
     animation:sparkMove 2.2s ease-in-out infinite;
     animation-delay:var(--spark-delay);
-    z-index:2;
+    z-index:3;
 }
 
 .promo-box .spark{
@@ -351,19 +397,19 @@ body{
 .platforms{
     display:flex;
     gap:7px;
-    z-index:5;
+    z-index:7;
 }
 
 .platform{
-    width:34px;
-    height:34px;
+    width:32px;
+    height:32px;
     border-radius:10px;
     display:grid;
     place-items:center;
     background:rgba(0,0,0,.25);
     border:2px solid var(--cyan);
     color:white;
-    font-size:18px;
+    font-size:17px;
     font-weight:1000;
     box-shadow:0 0 12px rgba(0,234,255,.9);
     animation:platformBounce 1.8s ease-in-out infinite;
@@ -392,8 +438,8 @@ body{
 }
 
 .discord-logo{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
     display:grid;
     place-items:center;
     border-radius:14px;
@@ -402,12 +448,12 @@ body{
         0 0 14px rgba(88,101,242,1),
         0 0 28px rgba(88,101,242,.75);
     animation:logoFloat 2.4s ease-in-out infinite;
-    z-index:5;
+    z-index:7;
 }
 
 .discord-logo svg{
-    width:34px;
-    height:34px;
+    width:32px;
+    height:32px;
     filter:drop-shadow(0 0 8px rgba(88,101,242,1));
 }
 </style>
@@ -421,11 +467,11 @@ body{
 </div>
 
 <script>
-const slideTime = 9000;
-const exitTime = 700;
+const slideTime = 10500;
+const exitTime = 1200;
 
 const trollItems = [
-    {icon:"⚡", label:"LIVE CU TROLL", main:"CONTROLEAZĂ-MI CARACTERUL", color:"green"},
+    {icon:"⚡", label:"LIVE CU TROLL", main:"CONTROLEAZĂ CARACTERUL", color:"green"},
     {img:"Perfume.png", label:"PARFUM", main:"ANIMAȚIE TROLL"},
     {img:"Super GG.png", label:"SUPER GG", main:"ANIMAȚIE TROLL"},
     {img:"palarie.png", label:"PĂLĂRIA", main:"DANS MACARENA"},
@@ -458,10 +504,10 @@ function textSpans(text, className){
     }).join("") + `</span>`;
 }
 
-function sparkles(type){
+function sparkles(){
     let html = "";
     for(let i = 0; i < 18; i++){
-        const left = 70 + Math.random() * 840;
+        const left = 90 + Math.random() * 800;
         const top = 14 + Math.random() * 42;
         const delay = Math.random() * 2;
         html += `<span class="spark" style="left:${left}px; top:${top}px; --spark-delay:${delay}s;"></span>`;
@@ -483,7 +529,7 @@ function buildBox(item, type){
     const boxClass = type === "promo" ? "box promo-box" : "box troll-box";
     let html = `<div class="${boxClass}">`;
 
-    html += sparkles(type);
+    html += sparkles();
 
     if(item.discord){
         html += discordLogo();
