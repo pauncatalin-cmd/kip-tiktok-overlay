@@ -64,88 +64,22 @@ body{
     justify-content:center;
     opacity:0;
     visibility:hidden;
-    animation:itemPop 66s infinite;
+    animation:itemPop 88s infinite;
+    animation-delay:var(--delay);
 }
 
 @keyframes itemPop{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.86) translateY(10px);
-        filter:blur(8px);
+        transform:scale(.88) translateY(10px);
+        filter:blur(7px);
     }
 
     1.2%{
         opacity:1;
         visibility:visible;
-        transform:scale(1.08) translateY(0);
-        filter:blur(0);
-    }
-
-    2.3%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1);
-        filter:blur(0);
-    }
-
-    7.2%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1);
-        filter:blur(0);
-    }
-
-    8.6%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(1.12) translateY(-8px);
-        filter:blur(7px);
-    }
-
-    100%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(.86) translateY(10px);
-        filter:blur(8px);
-    }
-}
-
-.troll-bar .item:nth-child(1){animation-delay:0s;}
-.troll-bar .item:nth-child(2){animation-delay:6s;}
-.troll-bar .item:nth-child(3){animation-delay:12s;}
-.troll-bar .item:nth-child(4){animation-delay:18s;}
-.troll-bar .item:nth-child(5){animation-delay:24s;}
-.troll-bar .item:nth-child(6){animation-delay:30s;}
-.troll-bar .item:nth-child(7){animation-delay:36s;}
-.troll-bar .item:nth-child(8){animation-delay:42s;}
-.troll-bar .item:nth-child(9){animation-delay:48s;}
-.troll-bar .item:nth-child(10){animation-delay:54s;}
-.troll-bar .item:nth-child(11){animation-delay:60s;}
-
-.promo-bar .item{
-    animation:itemPopPromo 36s infinite;
-}
-
-.promo-bar .item:nth-child(1){animation-delay:0s;}
-.promo-bar .item:nth-child(2){animation-delay:6s;}
-.promo-bar .item:nth-child(3){animation-delay:12s;}
-.promo-bar .item:nth-child(4){animation-delay:18s;}
-.promo-bar .item:nth-child(5){animation-delay:24s;}
-.promo-bar .item:nth-child(6){animation-delay:30s;}
-
-@keyframes itemPopPromo{
-    0%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(.86) translateY(10px);
-        filter:blur(8px);
-    }
-
-    1.4%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1.08) translateY(0);
+        transform:scale(1.06) translateY(0);
         filter:blur(0);
     }
 
@@ -156,25 +90,93 @@ body{
         filter:blur(0);
     }
 
-    13.5%{
+    8.2%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
         filter:blur(0);
     }
 
-    15.8%{
+    9.1%{
         opacity:0;
         visibility:hidden;
-        transform:scale(1.12) translateY(-8px);
-        filter:blur(7px);
+        transform:scale(1.08) translateY(-8px);
+        filter:blur(6px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.86) translateY(10px);
-        filter:blur(8px);
+        transform:scale(.88) translateY(10px);
+        filter:blur(7px);
+    }
+}
+
+.troll-bar .item:nth-child(1){--delay:0s;}
+.troll-bar .item:nth-child(2){--delay:8s;}
+.troll-bar .item:nth-child(3){--delay:16s;}
+.troll-bar .item:nth-child(4){--delay:24s;}
+.troll-bar .item:nth-child(5){--delay:32s;}
+.troll-bar .item:nth-child(6){--delay:40s;}
+.troll-bar .item:nth-child(7){--delay:48s;}
+.troll-bar .item:nth-child(8){--delay:56s;}
+.troll-bar .item:nth-child(9){--delay:64s;}
+.troll-bar .item:nth-child(10){--delay:72s;}
+.troll-bar .item:nth-child(11){--delay:80s;}
+
+.promo-bar .item{
+    animation:itemPopPromo 48s infinite;
+    animation-delay:var(--delay);
+}
+
+.promo-bar .item:nth-child(1){--delay:0s;}
+.promo-bar .item:nth-child(2){--delay:8s;}
+.promo-bar .item:nth-child(3){--delay:16s;}
+.promo-bar .item:nth-child(4){--delay:24s;}
+.promo-bar .item:nth-child(5){--delay:32s;}
+.promo-bar .item:nth-child(6){--delay:40s;}
+
+@keyframes itemPopPromo{
+    0%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(.88) translateY(10px);
+        filter:blur(7px);
+    }
+
+    2%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1.06) translateY(0);
+        filter:blur(0);
+    }
+
+    4%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1);
+        filter:blur(0);
+    }
+
+    15%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1);
+        filter:blur(0);
+    }
+
+    17%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(1.08) translateY(-8px);
+        filter:blur(6px);
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(.88) translateY(10px);
+        filter:blur(7px);
     }
 }
 
@@ -189,63 +191,14 @@ body{
     min-height:70px;
     padding:4px 12px;
     background:transparent;
-    animation:boxPulse 2.4s ease-in-out infinite;
 }
 
-/* Barele despărțitoare sunt scoase */
+/* Fără bare și fără dreptunghiuri */
 .box::before,
-.troll-box::before{
-    display:none;
-}
-
-/* Flash neon scurt la apariție */
-.box::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:100%;
-    height:70%;
-    transform:translate(-50%, -50%);
-    background:radial-gradient(circle, rgba(0,234,255,.22), transparent 65%);
-    opacity:0;
-    pointer-events:none;
-    animation:flashGlow 6s infinite;
-}
-
+.box::after,
+.troll-box::before,
 .troll-box::after{
-    background:radial-gradient(circle, rgba(255,79,216,.25), transparent 65%);
-}
-
-@keyframes flashGlow{
-    0%{
-        opacity:0;
-        transform:translate(-50%, -50%) scale(.8);
-    }
-
-    8%{
-        opacity:.9;
-        transform:translate(-50%, -50%) scale(1.08);
-    }
-
-    18%{
-        opacity:0;
-        transform:translate(-50%, -50%) scale(1.25);
-    }
-
-    100%{
-        opacity:0;
-    }
-}
-
-@keyframes boxPulse{
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.015);
-    }
+    display:none;
 }
 
 .logo{
@@ -277,7 +230,6 @@ body{
 }
 
 .label{
-    position:relative;
     color:white;
     font-size:24px;
     font-weight:1000;
@@ -290,12 +242,10 @@ body{
 
 .main,
 .troll-main{
-    position:relative;
     font-size:38px;
     font-weight:1000;
     line-height:1;
     white-space:nowrap;
-    overflow:hidden;
 }
 
 .main{
@@ -312,34 +262,6 @@ body{
         0 0 10px var(--pink),
         0 0 26px rgba(255,79,216,.95),
         0 0 42px rgba(255,79,216,.65);
-}
-
-/* Scan light peste textele mari */
-.main::after,
-.troll-main::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-130%;
-    width:80%;
-    height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
-    transform:skewX(-18deg);
-    animation:textShine 3.2s infinite;
-}
-
-@keyframes textShine{
-    0%{
-        left:-130%;
-    }
-
-    45%{
-        left:130%;
-    }
-
-    100%{
-        left:130%;
-    }
 }
 
 .intro-title{
@@ -409,6 +331,34 @@ body{
     box-shadow:
         0 0 12px var(--red),
         0 0 26px rgba(255,23,68,.8);
+}
+
+.char{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(16px) rotateX(90deg) rotateZ(-14deg) scale(.6);
+    animation:charBuild .7s cubic-bezier(.2,.9,.2,1.25) forwards;
+    animation-delay:calc(var(--char-index) * .035s);
+}
+
+@keyframes charBuild{
+    0%{
+        opacity:0;
+        transform:translateY(16px) rotateX(90deg) rotateZ(-14deg) scale(.6);
+        filter:blur(5px);
+    }
+
+    65%{
+        opacity:1;
+        transform:translateY(-3px) rotateX(0deg) rotateZ(5deg) scale(1.08);
+        filter:blur(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) rotateX(0deg) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
 }
 
 .platforms{
@@ -647,6 +597,25 @@ body{
     </div>
 
 </div>
+
+<script>
+function splitText(selector){
+    document.querySelectorAll(selector).forEach(element => {
+        const text = element.textContent;
+        element.textContent = "";
+
+        [...text].forEach((char, index) => {
+            const span = document.createElement("span");
+            span.className = "char";
+            span.style.setProperty("--char-index", index);
+            span.innerHTML = char === " " ? "&nbsp;" : char;
+            element.appendChild(span);
+        });
+    });
+}
+
+splitText(".label, .main, .troll-main, .small, .pill");
+</script>
 
 </body>
 </html>
