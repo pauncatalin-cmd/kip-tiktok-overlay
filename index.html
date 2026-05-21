@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KIP Full TikTok Overlay</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIP Overlay</title>
 
 <style>
 :root{
@@ -11,8 +11,8 @@
     --cyan:#00eaff;
     --green:#39ff14;
     --red:#ff1744;
-    --discord:#5865F2;
     --pink:#ff4fd8;
+    --discord:#5865F2;
 }
 
 *{
@@ -45,7 +45,6 @@ body{
     width:980px;
     height:74px;
     overflow:visible;
-    background:transparent;
 }
 
 .troll-bar{
@@ -53,7 +52,7 @@ body{
 }
 
 .promo-bar{
-    top:70px;
+    top:74px;
 }
 
 .item{
@@ -64,151 +63,147 @@ body{
     justify-content:center;
     opacity:0;
     visibility:hidden;
-    animation:itemPop 88s infinite;
+    animation:itemLife var(--total-time) infinite;
     animation-delay:var(--delay);
 }
 
-@keyframes itemPop{
+@keyframes itemLife{
     0%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.88) translateY(10px);
-        filter:blur(7px);
-    }
-
-    1.2%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1.05) translateY(0);
-        filter:blur(0);
-    }
-
-    2.5%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1);
-        filter:blur(0);
-    }
-
-    8.2%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1);
-        filter:blur(0);
-    }
-
-    9.1%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(1.08) translateY(-8px);
+        transform:scale(.96);
         filter:blur(6px);
-    }
-
-    100%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(.88) translateY(10px);
-        filter:blur(7px);
-    }
-}
-
-.troll-bar .item:nth-child(1){--delay:0s;}
-.troll-bar .item:nth-child(2){--delay:8s;}
-.troll-bar .item:nth-child(3){--delay:16s;}
-.troll-bar .item:nth-child(4){--delay:24s;}
-.troll-bar .item:nth-child(5){--delay:32s;}
-.troll-bar .item:nth-child(6){--delay:40s;}
-.troll-bar .item:nth-child(7){--delay:48s;}
-.troll-bar .item:nth-child(8){--delay:56s;}
-.troll-bar .item:nth-child(9){--delay:64s;}
-.troll-bar .item:nth-child(10){--delay:72s;}
-.troll-bar .item:nth-child(11){--delay:80s;}
-
-.promo-bar .item{
-    animation:itemPopPromo 48s infinite;
-    animation-delay:var(--delay);
-}
-
-.promo-bar .item:nth-child(1){--delay:0s;}
-.promo-bar .item:nth-child(2){--delay:8s;}
-.promo-bar .item:nth-child(3){--delay:16s;}
-.promo-bar .item:nth-child(4){--delay:24s;}
-.promo-bar .item:nth-child(5){--delay:32s;}
-.promo-bar .item:nth-child(6){--delay:40s;}
-
-@keyframes itemPopPromo{
-    0%{
-        opacity:0;
-        visibility:hidden;
-        transform:scale(.88) translateY(10px);
-        filter:blur(7px);
-    }
-
-    2%{
-        opacity:1;
-        visibility:visible;
-        transform:scale(1.05) translateY(0);
-        filter:blur(0);
     }
 
     4%{
         opacity:1;
         visibility:visible;
-        transform:scale(1);
+        transform:scale(1.03);
         filter:blur(0);
     }
 
-    15%{
+    8%{
         opacity:1;
         visibility:visible;
         transform:scale(1);
         filter:blur(0);
     }
 
-    17%{
+    86%{
+        opacity:1;
+        visibility:visible;
+        transform:scale(1);
+        filter:blur(0);
+    }
+
+    96%{
         opacity:0;
         visibility:hidden;
-        transform:scale(1.08) translateY(-8px);
+        transform:scale(1.05);
         filter:blur(6px);
     }
 
     100%{
         opacity:0;
         visibility:hidden;
-        transform:scale(.88) translateY(10px);
-        filter:blur(7px);
     }
 }
 
 .box{
     position:relative;
+    width:980px;
+    height:74px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    width:100%;
-    max-width:950px;
-    min-height:70px;
-    padding:4px 12px;
-    background:transparent;
+    gap:11px;
+    padding:0 22px;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255,79,216,.16), transparent 42%),
+        linear-gradient(90deg, transparent, rgba(0,234,255,.08), rgba(255,79,216,.10), transparent);
 }
 
-.box::before,
-.box::after,
-.troll-box::before,
-.troll-box::after{
-    display:none;
+.promo-box{
+    background:
+        radial-gradient(circle at 50% 50%, rgba(0,234,255,.15), transparent 42%),
+        linear-gradient(90deg, transparent, rgba(0,234,255,.10), rgba(57,255,20,.08), transparent);
+}
+
+.box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent),
+        repeating-linear-gradient(90deg, transparent 0 42px, rgba(255,255,255,.035) 43px, transparent 45px);
+    transform:translateX(-120%);
+    animation:scanLight 9s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes scanLight{
+    0%{
+        transform:translateX(-120%);
+        opacity:0;
+    }
+
+    18%{
+        opacity:1;
+    }
+
+    45%{
+        transform:translateX(120%);
+        opacity:.7;
+    }
+
+    100%{
+        transform:translateX(120%);
+        opacity:0;
+    }
+}
+
+.box::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:5px;
+    width:82%;
+    height:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(255,79,216,.65), transparent);
+    box-shadow:
+        0 0 10px rgba(0,234,255,.8),
+        0 0 18px rgba(255,79,216,.6);
+    opacity:.45;
+    pointer-events:none;
+}
+
+.promo-box::after{
+    background:linear-gradient(90deg, transparent, rgba(0,234,255,.65), rgba(57,255,20,.65), transparent);
+    box-shadow:
+        0 0 10px rgba(0,234,255,.8),
+        0 0 18px rgba(57,255,20,.6);
 }
 
 .logo{
-    width:64px;
-    height:64px;
+    width:58px;
+    height:58px;
     object-fit:contain;
     flex-shrink:0;
-    animation:logoFloat 2.4s ease-in-out infinite;
+    z-index:3;
     filter:
         drop-shadow(0 0 10px rgba(0,234,255,.95))
         drop-shadow(0 0 18px rgba(57,255,20,.55));
+    animation:logoFloat 2.4s ease-in-out infinite;
+}
+
+.icon{
+    font-size:36px;
+    flex-shrink:0;
+    z-index:3;
+    filter:drop-shadow(0 0 12px var(--cyan));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
@@ -221,34 +216,28 @@ body{
     }
 }
 
-.icon{
-    font-size:38px;
-    flex-shrink:0;
-    animation:logoFloat 2.4s ease-in-out infinite;
-    filter:drop-shadow(0 0 12px var(--cyan));
+.text{
+    position:relative;
+    z-index:4;
+    display:inline-flex;
+    white-space:nowrap;
 }
 
 .label{
     color:white;
-    font-size:24px;
+    font-size:23px;
     font-weight:1000;
-    letter-spacing:.7px;
+    letter-spacing:.6px;
     text-shadow:
         0 0 7px white,
         0 0 16px var(--cyan);
-    white-space:nowrap;
-}
-
-.main,
-.troll-main{
-    font-size:38px;
-    font-weight:1000;
-    line-height:1;
-    white-space:nowrap;
 }
 
 .main{
     color:var(--blue);
+    font-size:38px;
+    font-weight:1000;
+    line-height:1;
     text-shadow:
         0 0 10px var(--blue),
         0 0 24px rgba(0,170,255,.95),
@@ -257,21 +246,22 @@ body{
 
 .troll-main{
     color:var(--pink);
+    font-size:38px;
+    font-weight:1000;
+    line-height:1;
     text-shadow:
         0 0 10px var(--pink),
         0 0 26px rgba(255,79,216,.95),
         0 0 42px rgba(255,79,216,.65);
 }
 
-.intro-title{
-    font-size:38px;
-}
-
-.intro-sub{
-    font-size:20px;
-    max-width:none;
-    overflow:visible;
-    white-space:nowrap;
+.small{
+    color:white;
+    font-size:18px;
+    font-weight:900;
+    text-shadow:
+        0 0 7px white,
+        0 0 16px rgba(0,234,255,.65);
 }
 
 .green{
@@ -288,17 +278,16 @@ body{
         0 0 26px rgba(255,23,68,.9);
 }
 
-.small{
-    color:white;
-    font-size:18px;
-    font-weight:900;
+.discord{
+    color:var(--discord);
     text-shadow:
-        0 0 7px white,
-        0 0 16px rgba(0,234,255,.65);
-    white-space:nowrap;
+        0 0 10px var(--discord),
+        0 0 26px rgba(88,101,242,1);
 }
 
 .pill{
+    position:relative;
+    z-index:4;
     padding:5px 10px;
     border-radius:10px;
     background:var(--green);
@@ -310,6 +299,14 @@ body{
         0 0 24px rgba(57,255,20,.8);
     white-space:nowrap;
     animation:pillPulse 1.8s ease-in-out infinite;
+}
+
+.danger-pill{
+    background:var(--red);
+    color:white;
+    box-shadow:
+        0 0 12px var(--red),
+        0 0 26px rgba(255,23,68,.8);
 }
 
 @keyframes pillPulse{
@@ -324,118 +321,56 @@ body{
     }
 }
 
-.danger-pill{
-    background:var(--red);
-    color:white;
-    box-shadow:
-        0 0 12px var(--red),
-        0 0 26px rgba(255,23,68,.8);
-}
-
-.fly-wrap{
-    position:absolute;
-    left:50%;
-    top:-27px;
-    width:520px;
-    height:54px;
-    transform:translateX(-50%);
-    pointer-events:none;
-    z-index:5;
-}
-
-.fly-letter{
-    position:absolute;
-    left:50%;
-    top:50%;
-    color:var(--pink);
-    font-size:22px;
-    font-weight:1000;
-    text-shadow:
-        0 0 8px var(--pink),
-        0 0 18px rgba(255,79,216,.95),
-        0 0 30px rgba(255,79,216,.7);
+.char{
+    display:inline-block;
     opacity:0;
-    animation:letterArc 1.35s cubic-bezier(.18,.9,.25,1.15) forwards;
-    animation-delay:calc(var(--i) * .055s);
+    transform-origin:center;
+    animation:charLife 9s cubic-bezier(.2,.85,.25,1) infinite;
+    animation-delay:calc(var(--delay) + var(--i) * .035s);
 }
 
-@keyframes letterArc{
+@keyframes charLife{
     0%{
         opacity:0;
-        transform:
-            translate(-50%, -50%)
-            translate(0, 25px)
-            rotate(-130deg)
-            scale(.45);
+        transform:translateY(24px) rotateX(90deg) rotateZ(-22deg) scale(.45);
+        filter:blur(6px);
+    }
+
+    9%{
+        opacity:1;
+        transform:translateY(-4px) rotateX(0deg) rotateZ(4deg) scale(1.1);
+        filter:blur(0);
+    }
+
+    15%{
+        opacity:1;
+        transform:translateY(0) rotateX(0deg) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
+
+    74%{
+        opacity:1;
+        transform:translateY(0) rotateX(0deg) rotateZ(0deg) scale(1);
+        filter:blur(0);
+    }
+
+    90%{
+        opacity:0;
+        transform:translateY(-42px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(.65);
         filter:blur(5px);
     }
 
-    55%{
-        opacity:1;
-        transform:
-            translate(-50%, -50%)
-            translate(calc(var(--x) * .82), calc(var(--y) - 8px))
-            rotate(calc(var(--r) * 1deg))
-            scale(1.15);
-        filter:blur(0);
-    }
-
     100%{
-        opacity:1;
-        transform:
-            translate(-50%, -50%)
-            translate(var(--x), var(--y))
-            rotate(calc(var(--r) * 1deg))
-            scale(1);
-        filter:blur(0);
-    }
-}
-
-.sparkles{
-    position:absolute;
-    left:50%;
-    top:-8px;
-    width:560px;
-    height:60px;
-    transform:translateX(-50%);
-    pointer-events:none;
-    z-index:4;
-}
-
-.spark{
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:var(--pink);
-    box-shadow:
-        0 0 8px var(--pink),
-        0 0 18px rgba(255,79,216,.9);
-    opacity:0;
-    animation:sparkPulse 1.9s ease-in-out infinite;
-    animation-delay:var(--sd);
-}
-
-@keyframes sparkPulse{
-    0%,100%{
         opacity:0;
-        transform:scale(.4);
-    }
-
-    45%{
-        opacity:1;
-        transform:scale(1.3);
-    }
-
-    70%{
-        opacity:.35;
-        transform:scale(.8);
+        transform:translateY(-42px) translateX(var(--fly-x)) rotateZ(var(--fly-r)) scale(.65);
+        filter:blur(5px);
     }
 }
 
 .platforms{
     display:flex;
     gap:7px;
+    z-index:4;
 }
 
 .platform{
@@ -475,6 +410,45 @@ body{
     }
 }
 
+.spark{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:var(--pink);
+    box-shadow:
+        0 0 8px var(--pink),
+        0 0 18px rgba(255,79,216,.9);
+    opacity:0;
+    animation:sparkMove 2.2s ease-in-out infinite;
+    animation-delay:var(--spark-delay);
+    z-index:2;
+}
+
+.promo-box .spark{
+    background:var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0,234,255,.9);
+}
+
+@keyframes sparkMove{
+    0%{
+        opacity:0;
+        transform:translateY(10px) scale(.4);
+    }
+
+    35%{
+        opacity:1;
+        transform:translateY(-4px) scale(1.2);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-22px) scale(.5);
+    }
+}
+
 .discord-logo{
     width:42px;
     height:42px;
@@ -486,6 +460,7 @@ body{
         0 0 14px rgba(88,101,242,1),
         0 0 28px rgba(88,101,242,.75);
     animation:logoFloat 2.4s ease-in-out infinite;
+    z-index:4;
 }
 
 .discord-logo svg{
@@ -493,260 +468,115 @@ body{
     height:34px;
     filter:drop-shadow(0 0 8px rgba(88,101,242,1));
 }
-
-.discord{
-    color:var(--discord);
-    text-shadow:
-        0 0 10px var(--discord),
-        0 0 26px rgba(88,101,242,1);
-}
 </style>
 </head>
 
 <body>
 
 <div class="full-overlay">
-
-    <div class="bar troll-bar">
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="LIVE CU TROLL"></div>
-                <div class="icon">⚡</div>
-                <div class="main green intro-title">LIVE CU TROLL</div>
-                <div class="label intro-sub">CONTROLEAZĂ-MI CARACTERUL</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="ANIMAȚIE TROLL"></div>
-                <img class="logo" src="Perfume.png">
-                <div class="label">PARFUM</div>
-                <div class="troll-main">ANIMAȚIE TROLL</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="ANIMAȚIE TROLL"></div>
-                <img class="logo" src="Super GG.png">
-                <div class="label">SUPER GG</div>
-                <div class="troll-main">ANIMAȚIE TROLL</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="DANS MACARENA"></div>
-                <img class="logo" src="palarie.png">
-                <div class="label">PĂLĂRIA</div>
-                <div class="troll-main">DANS MACARENA</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="MICHAEL JACKSON"></div>
-                <img class="logo" src="scoica.png">
-                <div class="label">SCOICA</div>
-                <div class="troll-main">DANS MICHAEL JACKSON</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="TASTA F"></div>
-                <img class="logo" src="Money Gun.png">
-                <div class="label">MONEY GUN</div>
-                <div class="troll-main">TASTA F</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="DANS"></div>
-                <img class="logo" src="hand_heart.png">
-                <div class="label">HAND HEART</div>
-                <div class="troll-main">DANS</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="FLOTĂRI"></div>
-                <img class="logo" src="Paper Crane.png">
-                <div class="label">PAPER CRANE</div>
-                <div class="troll-main">FLOTĂRI</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="ALT + F4"></div>
-                <img class="logo" src="Future Encounter.png">
-                <div class="label">FUTURE</div>
-                <div class="troll-main">ALT + F4</div>
-                <div class="pill danger-pill">MĂ SCOȚI DIN JOC</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="DANS FLOSS"></div>
-                <img class="logo" src="mishka_bear.png">
-                <div class="label">MISHKA BEAR</div>
-                <div class="troll-main">DANS FLOSS</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box troll-box">
-                <div class="sparkles"></div>
-                <div class="fly-wrap" data-fly="ANIMAȚIE TROLL"></div>
-                <img class="logo" src="Confetti.png">
-                <div class="label">CONFETTI</div>
-                <div class="troll-main">ANIMAȚIE TROLL</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="bar promo-bar">
-
-        <div class="item">
-            <div class="box">
-                <div class="icon">🛒</div>
-                <div class="label">B-ZONE</div>
-                <div class="main">SHOP</div>
-                <div class="small">INTRĂ PE SHOP</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box">
-                <div class="icon">🏷️</div>
-                <div class="label">PROMO CODE</div>
-                <div class="main green">KIP</div>
-                <div class="small">LA CHECKOUT</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box">
-                <div class="icon">🌐</div>
-                <div class="label">LINK SHOP</div>
-                <div class="main">GTA5.RO/SHOP</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box">
-                <div class="icon">🎁</div>
-                <div class="label">ADAUGĂ</div>
-                <div class="main green">REFERRAL 13</div>
-                <div class="pill">MAȘINĂ + GEANTĂ</div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box">
-                <div class="icon">🔴</div>
-                <div class="label">LIVE PE</div>
-                <div class="main red">TIKTOK</div>
-                <div class="small">KICK & YOUTUBE</div>
-                <div class="platforms">
-                    <div class="platform">♪</div>
-                    <div class="platform kick">K</div>
-                    <div class="platform yt">▶</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="box">
-                <div class="discord-logo">
-                    <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
-                        <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-                    </svg>
-                </div>
-
-                <div class="label discord">DISCORD</div>
-                <div class="main green">KIP Community</div>
-                <div class="pill">LINK ÎN BIO</div>
-            </div>
-        </div>
-
-    </div>
-
+    <div class="bar troll-bar" id="trollBar"></div>
+    <div class="bar promo-bar" id="promoBar"></div>
 </div>
 
 <script>
-function buildFlyingLetters(){
-    document.querySelectorAll(".fly-wrap").forEach(wrap => {
-        const text = wrap.dataset.fly || "";
-        wrap.innerHTML = "";
+const trollItems = [
+    {icon:"⚡", label:"LIVE CU TROLL", main:"CONTROLEAZĂ-MI CARACTERUL", color:"green"},
+    {img:"Perfume.png", label:"PARFUM", main:"ANIMAȚIE TROLL"},
+    {img:"Super GG.png", label:"SUPER GG", main:"ANIMAȚIE TROLL"},
+    {img:"palarie.png", label:"PĂLĂRIA", main:"DANS MACARENA"},
+    {img:"scoica.png", label:"SCOICA", main:"DANS MICHAEL JACKSON"},
+    {img:"Money Gun.png", label:"MONEY GUN", main:"TASTA F"},
+    {img:"hand_heart.png", label:"HAND HEART", main:"DANS"},
+    {img:"Paper Crane.png", label:"PAPER CRANE", main:"FLOTĂRI"},
+    {img:"Future Encounter.png", label:"FUTURE", main:"ALT + F4", pill:"MĂ SCOȚI DIN JOC", danger:true},
+    {img:"mishka_bear.png", label:"MISHKA BEAR", main:"DANS FLOSS"},
+    {img:"Confetti.png", label:"CONFETTI", main:"ANIMAȚIE TROLL"}
+];
 
-        const letters = [...text];
-        const total = letters.length;
-        const width = Math.min(420, Math.max(160, total * 24));
-        const start = -width / 2;
-        const step = total > 1 ? width / (total - 1) : 0;
+const promoItems = [
+    {icon:"🛒", label:"B-ZONE", main:"SHOP", small:"INTRĂ PE SHOP"},
+    {icon:"🏷️", label:"PROMO CODE", main:"KIP", mainClass:"green", small:"LA CHECKOUT"},
+    {icon:"🌐", label:"LINK SHOP", main:"GTA5.RO/SHOP"},
+    {icon:"🎁", label:"ADAUGĂ", main:"REFERRAL 13", mainClass:"green", pill:"MAȘINĂ + GEANTĂ"},
+    {icon:"🔴", label:"LIVE PE", main:"TIKTOK", mainClass:"red", small:"KICK & YOUTUBE", platforms:true},
+    {discord:true, label:"DISCORD", labelClass:"discord", main:"KIP Community", mainClass:"green", pill:"LINK ÎN BIO"}
+];
 
-        letters.forEach((char, index) => {
-            const span = document.createElement("span");
-            span.className = "fly-letter";
-
-            const x = start + step * index;
-            const curve = Math.sin((index / Math.max(total - 1, 1)) * Math.PI);
-            const y = -8 - curve * 34;
-            const r = -28 + (56 / Math.max(total - 1, 1)) * index;
-
-            span.style.setProperty("--i", index);
-            span.style.setProperty("--x", x + "px");
-            span.style.setProperty("--y", y + "px");
-            span.style.setProperty("--r", r);
-
-            span.innerHTML = char === " " ? "&nbsp;" : char;
-            wrap.appendChild(span);
-        });
-    });
+function textSpans(text, className, baseDelay){
+    const chars = [...text];
+    return `<span class="text ${className}">` + chars.map((char, index) => {
+        const flyX = (index % 2 === 0 ? -1 : 1) * (18 + Math.random() * 32);
+        const flyR = (index % 2 === 0 ? -1 : 1) * (35 + Math.random() * 70);
+        return `<span class="char" style="--i:${index}; --delay:${baseDelay}s; --fly-x:${flyX}px; --fly-r:${flyR}deg;">${char === " " ? "&nbsp;" : char}</span>`;
+    }).join("") + `</span>`;
 }
 
-function buildSparkles(){
-    document.querySelectorAll(".sparkles").forEach(box => {
-        box.innerHTML = "";
-
-        for(let i = 0; i < 18; i++){
-            const spark = document.createElement("span");
-            spark.className = "spark";
-
-            const x = 30 + Math.random() * 500;
-            const y = 8 + Math.random() * 44;
-            const delay = Math.random() * 1.5;
-
-            spark.style.left = x + "px";
-            spark.style.top = y + "px";
-            spark.style.setProperty("--sd", delay + "s");
-
-            box.appendChild(spark);
-        }
-    });
+function sparkles(){
+    let html = "";
+    for(let i = 0; i < 22; i++){
+        const left = 60 + Math.random() * 860;
+        const top = 12 + Math.random() * 48;
+        const delay = Math.random() * 2;
+        html += `<span class="spark" style="left:${left}px; top:${top}px; --spark-delay:${delay}s;"></span>`;
+    }
+    return html;
 }
 
-buildFlyingLetters();
-buildSparkles();
+function discordLogo(){
+    return `
+    <div class="discord-logo">
+        <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.3-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1z"/>
+            <path fill="#5865F2" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 220V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
+        </svg>
+    </div>`;
+}
+
+function buildItem(item, index, total, type){
+    const delay = index * 9;
+    const boxClass = type === "promo" ? "box promo-box" : "box troll-box";
+    const itemDelay = `${delay}s`;
+
+    let html = `<div class="item" style="--delay:${itemDelay}; --total-time:${total * 9}s;">`;
+    html += `<div class="${boxClass}">`;
+    html += sparkles();
+
+    if(item.discord){
+        html += discordLogo();
+    } else if(item.img){
+        html += `<img class="logo" src="${item.img}">`;
+    } else if(item.icon){
+        html += `<div class="icon">${item.icon}</div>`;
+    }
+
+    html += textSpans(item.label, `label ${item.labelClass || ""}`, delay);
+
+    const mainClass = type === "promo" ? `main ${item.mainClass || ""}` : `troll-main ${item.color || ""}`;
+    html += textSpans(item.main, mainClass, delay);
+
+    if(item.small){
+        html += textSpans(item.small, "small", delay);
+    }
+
+    if(item.pill){
+        html += `<div class="pill ${item.danger ? "danger-pill" : ""}">${item.pill}</div>`;
+    }
+
+    if(item.platforms){
+        html += `
+        <div class="platforms">
+            <div class="platform">♪</div>
+            <div class="platform kick">K</div>
+            <div class="platform yt">▶</div>
+        </div>`;
+    }
+
+    html += `</div></div>`;
+    return html;
+}
+
+document.getElementById("trollBar").innerHTML = trollItems.map((item, index) => buildItem(item, index, trollItems.length, "troll")).join("");
+document.getElementById("promoBar").innerHTML = promoItems.map((item, index) => buildItem(item, index, promoItems.length, "promo")).join("");
 </script>
 
 </body>
