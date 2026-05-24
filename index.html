@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KIP Overlay Promo Only</title>
+<title>KIP Overlay Smooth</title>
 
 <style>
 :root{
     --bar-width:1330px;
-    --bar-height:70px;
+    --bar-height:150px;
+
     --blue:#00aaff;
     --cyan:#00eaff;
     --green:#39ff14;
     --red:#ff1744;
+    --pink:#ff4fd8;
     --discord:#5865F2;
 }
 
-*{box-sizing:border-box;}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -50,13 +54,20 @@ body{
 .row{
     position:absolute;
     left:0;
-    top:0;
     width:var(--bar-width);
     height:70px;
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:visible;
+}
+
+.row-top{
+    top:4px;
+}
+
+.row-bottom{
+    top:78px;
 }
 
 .slide{
@@ -100,11 +111,13 @@ body{
         transform:translateY(28px) translateX(var(--enter-x)) rotateZ(var(--enter-r)) scale(.74);
         filter:blur(9px);
     }
+
     55%{
         opacity:1;
         transform:translateY(-4px) translateX(0) rotateZ(3deg) scale(1.08);
         filter:blur(0);
     }
+
     100%{
         opacity:1;
         transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
@@ -118,6 +131,7 @@ body{
         transform:translateY(0) translateX(0) rotateZ(0deg) scale(1);
         filter:blur(0);
     }
+
     100%{
         opacity:0;
         transform:translateY(-34px) translateX(calc(var(--fly-x) * 1.6)) rotateZ(calc(var(--fly-r) * 1.1)) scale(.78);
@@ -126,13 +140,39 @@ body{
 }
 
 @keyframes slideSoftExit{
-    0%{opacity:1; transform:scale(1);}
-    100%{opacity:0; transform:scale(.97);}
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(.97);
+    }
 }
 
 @keyframes textBoomPulse{
-    0%,100%{transform:scale(1); filter:brightness(1);}
-    50%{transform:scale(1.035); filter:brightness(1.25);}
+    0%,100%{
+        transform:scale(1);
+        filter:brightness(1);
+    }
+
+    50%{
+        transform:scale(1.035);
+        filter:brightness(1.25);
+    }
+}
+
+.logo{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    flex-shrink:0;
+    z-index:5;
+    filter:
+        drop-shadow(0 0 10px rgba(0,234,255,.95))
+        drop-shadow(0 0 18px rgba(57,255,20,.55));
+    animation:logoFloat 2.4s ease-in-out infinite;
 }
 
 .icon{
@@ -144,8 +184,13 @@ body{
 }
 
 @keyframes logoFloat{
-    0%,100%{transform:translateY(0) scale(1);}
-    50%{transform:translateY(-4px) scale(1.06);}
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+
+    50%{
+        transform:translateY(-4px) scale(1.06);
+    }
 }
 
 .text{
@@ -175,6 +220,17 @@ body{
         0 0 10px var(--blue),
         0 0 24px rgba(0,170,255,.95),
         0 0 38px rgba(0,234,255,.65);
+}
+
+.troll-main{
+    color:var(--pink);
+    font-size:38px;
+    font-weight:1000;
+    line-height:1;
+    text-shadow:
+        0 0 10px var(--pink),
+        0 0 26px rgba(255,79,216,.95),
+        0 0 42px rgba(255,79,216,.65);
 }
 
 .small{
@@ -219,20 +275,38 @@ body{
     width:4px;
     height:4px;
     border-radius:50%;
-    background:var(--cyan);
+    background:var(--pink);
     box-shadow:
-        0 0 8px var(--cyan),
-        0 0 18px rgba(0,234,255,.9);
+        0 0 8px var(--pink),
+        0 0 18px rgba(255,79,216,.9);
     opacity:0;
     animation:sparkMove 2.2s ease-in-out infinite;
     animation-delay:var(--spark-delay);
     z-index:2;
 }
 
+.row-bottom .spark{
+    background:var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0,234,255,.9);
+}
+
 @keyframes sparkMove{
-    0%{opacity:0; transform:translateY(8px) scale(.4);}
-    35%{opacity:1; transform:translateY(-4px) scale(1.2);}
-    100%{opacity:0; transform:translateY(-20px) scale(.5);}
+    0%{
+        opacity:0;
+        transform:translateY(8px) scale(.4);
+    }
+
+    35%{
+        opacity:1;
+        transform:translateY(-4px) scale(1.2);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-20px) scale(.5);
+    }
 }
 
 .pill{
@@ -251,9 +325,24 @@ body{
     animation:pillPulse 1.8s ease-in-out infinite;
 }
 
+.danger-pill{
+    background:var(--red);
+    color:white;
+    box-shadow:
+        0 0 12px var(--red),
+        0 0 26px rgba(255,23,68,.8);
+}
+
 @keyframes pillPulse{
-    0%,100%{transform:scale(1); filter:brightness(1);}
-    50%{transform:scale(1.04); filter:brightness(1.18);}
+    0%,100%{
+        transform:scale(1);
+        filter:brightness(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+        filter:brightness(1.18);
+    }
 }
 
 .platforms{
@@ -290,8 +379,13 @@ body{
 }
 
 @keyframes platformBounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-3px);}
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
 }
 
 .discord-logo{
@@ -320,7 +414,8 @@ body{
 
 <div class="full-overlay">
     <div class="mega-bar">
-        <div class="row" id="promoRow"></div>
+        <div class="row row-top" id="trollRow"></div>
+        <div class="row row-bottom" id="promoRow"></div>
     </div>
 </div>
 
@@ -328,6 +423,20 @@ body{
 const slideTime = 9500;
 const flyTime = 1100;
 const overlapTime = 420;
+
+const trollItems = [
+    {icon:"⚡", label:"LIVE CU TROLL", main:"CONTROLEAZĂ-MI CARACTERUL", color:"green"},
+    {img:"Perfume.png", label:"PARFUM", main:"ANIMAȚIE TROLL"},
+    {img:"Super GG.png", label:"SUPER GG", main:"ANIMAȚIE TROLL"},
+    {img:"palarie.png", label:"PĂLĂRIA", main:"DANS MACARENA"},
+    {img:"scoica.png", label:"SCOICA", main:"DANS MICHAEL JACKSON"},
+    {img:"Money Gun.png", label:"MONEY GUN", main:"TASTA F"},
+    {img:"hand_heart.png", label:"HAND HEART", main:"DANS"},
+    {img:"Paper Crane.png", label:"PAPER CRANE", main:"FLOTĂRI"},
+    {img:"Future Encounter.png", label:"FUTURE", main:"ALT + F4", pill:"MĂ SCOȚI DIN JOC", danger:true},
+    {img:"mishka_bear.png", label:"MISHKA BEAR", main:"DANS FLOSS"},
+    {img:"Confetti.png", label:"CONFETTI", main:"ANIMAȚIE TROLL"}
+];
 
 const promoItems = [
     {icon:"🛒", label:"B-ZONE", main:"SHOP", small:"INTRĂ PE SHOP"},
@@ -338,6 +447,7 @@ const promoItems = [
     {discord:true, label:"DISCORD", labelClass:"discord", main:"KIP Community", mainClass:"green", pill:"LINK ÎN BIO"}
 ];
 
+let trollIndex = 0;
 let promoIndex = 0;
 
 function textSpans(text, className){
@@ -374,25 +484,29 @@ function discordLogo(){
     </div>`;
 }
 
-function buildSlide(item){
+function buildSlide(item, type){
     let html = `<div class="slide entering">`;
     html += sparkles();
 
     if(item.discord){
         html += discordLogo();
+    } else if(item.img){
+        html += `<img class="logo" src="${item.img}">`;
     } else if(item.icon){
         html += `<div class="icon">${item.icon}</div>`;
     }
 
     html += textSpans(item.label, `label ${item.labelClass || ""}`);
-    html += textSpans(item.main, `main ${item.mainClass || ""}`);
+
+    const mainClass = type === "promo" ? `main ${item.mainClass || ""}` : `troll-main ${item.color || ""}`;
+    html += textSpans(item.main, mainClass);
 
     if(item.small){
         html += textSpans(item.small, "small");
     }
 
     if(item.pill){
-        html += `<div class="pill">${item.pill}</div>`;
+        html += `<div class="pill ${item.danger ? "danger-pill" : ""}">${item.pill}</div>`;
     }
 
     if(item.platforms){
@@ -416,8 +530,8 @@ function activateSlide(slide){
     }, 1100);
 }
 
-function switchSlide(){
-    const row = document.getElementById("promoRow");
+function switchSlide(rowId, items, index, type){
+    const row = document.getElementById(rowId);
     const oldSlide = row.querySelector(".slide:not(.leaving)");
 
     if(oldSlide){
@@ -425,7 +539,7 @@ function switchSlide(){
         oldSlide.classList.add("leaving");
 
         setTimeout(() => {
-            row.insertAdjacentHTML("beforeend", buildSlide(promoItems[promoIndex]));
+            row.insertAdjacentHTML("beforeend", buildSlide(items[index], type));
             const newSlide = row.querySelector(".slide.entering:not(.leaving)");
             activateSlide(newSlide);
         }, overlapTime);
@@ -436,18 +550,24 @@ function switchSlide(){
             }
         }, flyTime + 350);
     } else {
-        row.insertAdjacentHTML("beforeend", buildSlide(promoItems[promoIndex]));
+        row.insertAdjacentHTML("beforeend", buildSlide(items[index], type));
         const newSlide = row.querySelector(".slide.entering:not(.leaving)");
         activateSlide(newSlide);
     }
 }
 
 function start(){
-    switchSlide();
+    switchSlide("trollRow", trollItems, trollIndex, "troll");
+    switchSlide("promoRow", promoItems, promoIndex, "promo");
+
+    setInterval(() => {
+        trollIndex = (trollIndex + 1) % trollItems.length;
+        switchSlide("trollRow", trollItems, trollIndex, "troll");
+    }, slideTime);
 
     setInterval(() => {
         promoIndex = (promoIndex + 1) % promoItems.length;
-        switchSlide();
+        switchSlide("promoRow", promoItems, promoIndex, "promo");
     }, slideTime);
 }
 
